@@ -2155,21 +2155,21 @@
           document.getElementById('optCText').innerText = res.options[2];
           document.getElementById('optDText').innerText = res.options[3];
 
-          // Reset timer UI to 60s, but DO NOT start timer until Host clicks 🚀 Start / Resume Game!
-          stopTimer();
-          state.timerSeconds = 60;
-          updateTimerUI(60, 60);
-
-          // Disable option buttons until Host starts the question
+          // Automatically enable options and start 60s timer for seamless gameplay!
+          state.gameStartedForQuestion = true;
           ['A', 'B', 'C', 'D'].forEach(opt => {
             const btn = document.getElementById(`opt${opt}`);
-            if (btn) btn.disabled = true;
+            if (btn) {
+              btn.className = 'option-btn';
+              btn.disabled = false;
+            }
           });
 
-          // Highlight/Pulse the Start / Resume Game button to invite Host click
           const startBtn = document.getElementById('startResumeHeaderBtn');
-          if (startBtn) startBtn.classList.add('btn-pulse');
+          if (startBtn) startBtn.classList.remove('btn-pulse');
 
+          // Automatically start 60-second timer countdown!
+          startTimer();
           saveState('Playing');
         } else {
           alert(res.error || 'Failed to claim question.');
@@ -2301,7 +2301,7 @@
         const btn = document.getElementById(`opt${opt}`);
         if (btn) {
           btn.className = 'option-btn';
-          btn.disabled = true; // Disabled until Host clicks 🚀 Start / Resume Game
+          btn.disabled = false;
         }
       });
     }
