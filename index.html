@@ -1015,7 +1015,52 @@
       }
       .no-print, .modal-overlay { background: none !important; backdrop-filter: none !important; }
     }
-  </style>
+  
+    /* ---- PILL BUTTON-LIKE INPUT DESIGN ---- */
+    .pill-input-box {
+      max-width: 480px;
+      margin: 0 auto 28px;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(20, 38, 75, 0.95) 0%, rgba(10, 19, 41, 0.95) 100%);
+      border: 2px solid var(--glass-border-strong);
+      border-radius: var(--r-pill);
+      padding: 6px 12px 6px 24px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), inset 0 2px 4px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .pill-input-box:focus-within {
+      border-color: var(--gold);
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.45), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .pill-input-icon {
+      font-size: 1.25rem;
+      color: var(--gold-hi);
+      margin-right: 14px;
+      flex-shrink: 0;
+    }
+
+    .pill-input-box input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #ffffff;
+      font-size: 1.15rem;
+      font-weight: 600;
+      padding: 10px 0;
+      font-family: var(--sans);
+    }
+
+    .pill-input-box input::placeholder {
+      color: var(--chalk-dim);
+      font-weight: 500;
+      opacity: 0.75;
+    }
+</style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
@@ -1049,8 +1094,9 @@
       <div id="playerSelectSection" class="player-select-card">
         <h2 class="welcome-title">Welcome to the Hotseat!</h2>
         <p class="welcome-subtitle">SUCCESS SCHOOL, INDI · Pin Code - 586 209, Dist: Vijayapur, Karnataka</p>
-        <div class="input-wrap">
-          <input type="text" id="playerNameInput" placeholder="Enter Teacher / Player Name" />
+        <div class="pill-input-box">
+          <span class="pill-input-icon">👤</span>
+          <input type="text" id="playerNameInput" placeholder="Enter Teacher / Player Name..." autocomplete="off" />
         </div>
         <div class="btn-group-spacious">
           <button class="btn btn-primary btn-lg" onclick="startOrResumeGame()">➕ Add Contestant</button>
