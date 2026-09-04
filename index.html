@@ -1091,6 +1091,7 @@
             <button class="btn btn-secondary btn-sm" id="nextQHeaderBtn" onclick="nextQuestion()" disabled>⏭️ Next Q</button>
             <button class="btn btn-secondary btn-sm" onclick="triggerCelebrationBurst(true)" title="Trigger Celebration Burst">🎉 Celebration</button>
             <button class="btn btn-secondary btn-sm" onclick="pushCurrentToTV()">📺 Push to TV</button>
+            <button class="btn btn-secondary btn-sm" onclick="showDummyCheque()" title="Display Prize Cheque Modal">🏆 Cheque</button>
             <button class="btn btn-secondary btn-sm" onclick="quitAndTakeMoney()">💰 Quit & Claim</button>
           </div>
         </div>
@@ -2934,9 +2935,10 @@
     }
 
     function showDummyCheque(playerName, amount) {
-      const pName = playerName || 'Honorable Teacher';
-      const amtStr = (amount || 0).toLocaleString('en-IN');
-      const amtWords = numberToWordsINR(amount || 0);
+      const pName = playerName || state.playerName || 'Honorable Teacher';
+      const amt = amount !== undefined ? amount : (state.score || 0);
+      const amtStr = amt.toLocaleString('en-IN');
+      const amtWords = numberToWordsINR(amt);
       
       const today = new Date();
       const dd = String(today.getDate()).padStart(2, '0');
@@ -2950,11 +2952,18 @@
         chequeLogo.src = mainLogo.src;
       }
 
-      document.getElementById('chequeDate').innerText = `${dd} / ${mm} / ${yyyy}`;
-      document.getElementById('chequePayee').innerText = pName;
-      document.getElementById('chequeAmountWords').innerText = amtWords;
-      document.getElementById('chequeAmountNumber').innerText = `₹ ${amtStr}/-`;
-      
+      const dateEl = document.getElementById('chequeDateVal');
+      if (dateEl) dateEl.innerText = `${dd} / ${mm} / ${yyyy}`;
+
+      const payeeEl = document.getElementById('chequePayeeVal');
+      if (payeeEl) payeeEl.innerText = pName;
+
+      const wordsEl = document.getElementById('chequeWordsVal');
+      if (wordsEl) wordsEl.innerText = amtWords;
+
+      const amtEl = document.getElementById('chequeAmountVal');
+      if (amtEl) amtEl.innerText = `${amtStr}/-`;
+
       openModal('chequeModal');
     }
 
