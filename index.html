@@ -1860,8 +1860,18 @@
       }
 
       async broadcastCurrentState() {
-        const stateData = await callBackend('getPublicGameState');
+        const stateData = await callBackend('getPublicGameState') || {};
+        stateData.selectedOption = state.selectedOption;
+        // ONLY include correctOption and set answered=true when Host has unlocked/confirmed the final answer!
+        if (state.answerUnlocked) {
+          stateData.correctOption = state.currentQuestionData ? state.currentQuestionData.correct : null;
+          stateData.answered = true;
+        } else {
+          stateData.correctOption = null;
+          stateData.answered = false;
+        }
         this.broadcast({ type: 'PUBLIC_GAME_STATE', payload: stateData });
+      });
       }
 
       updateBadge(msg) {
@@ -2774,13 +2784,12 @@
 
         renderTVPrizeLadder(res.currentQuestion || res.gameQuestion || 1);
 
-        // CHECK IF HOST HAS LOCKED & CONFIRMED FINAL ANSWER:
-        const isAnswerRevealed = res.answered === true ||
-                                 res.answered === 'true' ||
-                                 (res.extra && (res.extra.answered === true || res.extra.answered === 'true')) ||
-                                 (state.playerName === res.playerName && state.answerUnlocked === true);
+        // CHECK IF HOST HAS CONFIRMED & LOCKED THE FINAL ANSWER STRICTLY:
+        const isAnswerRevealed = (res.answered === true || res.answered === 'true') ||
+                                 (res.extra && (res.extra.answered === true || res.extra.answered === 'true'));
 
-        const correctOpt = res.correctOption || res.correct;
+        // ONLY evaluate correctOption if Host has locked & revealed the final answer!
+        const correctOpt = isAnswerRevealed ? (res.correctOption || res.correct || null) : null;
 
         // Mirror options on TV
         ['A', 'B', 'C', 'D'].forEach(opt => {
@@ -2794,11 +2803,11 @@
             }
 
             // 2. Reveal Correct (Green) & Wrong (Red) ONLY AFTER Host locks final answer!
-            if (isAnswerRevealed) {
+            if (isAnswerRevealed && correctOpt) {
               if (correctOpt === opt) {
                 el.classList.add('correct');
               }
-              if (res.selectedOption === opt && correctOpt && res.selectedOption !== correctOpt) {
+              if (res.selectedOption === opt && res.selectedOption !== correctOpt) {
                 el.classList.add('wrong');
               }
             }
