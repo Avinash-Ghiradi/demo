@@ -2734,6 +2734,94 @@
       } catch(e) {}
     }
 
+    function renderTVFromData(res) {
+      const banner = document.getElementById('tvStatusBanner');
+      const content = document.getElementById('tvActiveContent');
+
+      if (!res || !res.active) {
+        if (banner) banner.innerText = res ? res.message : 'WAITING FOR HOST TO START GAME';
+        if (content) content.style.display = 'none';
+      } else {
+        if (banner) banner.innerText = `LIVE BROADCAST · Q${res.currentQuestion || res.gameQuestion || 1} OF 15`;
+        if (content) content.style.display = 'block';
+
+        const pName = document.getElementById('tvPlayerName');
+        if (pName) pName.innerText = res.playerName || state.playerName || 'Player';
+
+        const qNumEl = document.getElementById('tvQNum');
+        if (qNumEl) qNumEl.innerText = res.currentQuestion || res.gameQuestion || 1;
+
+        const scoreEl = document.getElementById('tvScore');
+        if (scoreEl) scoreEl.innerText = (res.score || 0).toLocaleString('en-IN');
+
+        const qTextEl = document.getElementById('tvQuestionText');
+        if (qTextEl) qTextEl.innerText = res.question || '';
+
+        const diffTag = document.getElementById('tvDifficultyTag');
+        if (diffTag) diffTag.innerText = `${(res.difficulty || 'EASY').toUpperCase()} LEVEL · Q${res.currentQuestion || res.gameQuestion || 1}`;
+
+        const optA = document.getElementById('tvOptAText'); if (optA) optA.innerText = res.options ? res.options[0] : '';
+        const optB = document.getElementById('tvOptBText'); if (optB) optB.innerText = res.options ? res.options[1] : '';
+        const optC = document.getElementById('tvOptCText'); if (optC) optC.innerText = res.options ? res.options[2] : '';
+        const optD = document.getElementById('tvOptDText'); if (optD) optD.innerText = res.options ? res.options[3] : '';
+
+        // Sync Timer UI on TV
+        const tvClock = document.getElementById('tvTimerClock');
+        const tvBar = document.getElementById('tvTimerBar');
+        const currentSec = state.timerSeconds !== undefined ? state.timerSeconds : 60;
+        if (tvClock) tvClock.innerText = currentSec;
+        if (tvBar) tvBar.style.width = ((currentSec / 60) * 100) + '%';
+
+        renderTVPrizeLadder(res.currentQuestion || res.gameQuestion || 1);
+
+        // CHECK IF HOST HAS LOCKED & CONFIRMED FINAL ANSWER:
+        const isAnswerRevealed = res.answered === true ||
+                                 res.answered === 'true' ||
+                                 (res.extra && (res.extra.answered === true || res.extra.answered === 'true')) ||
+                                 (state.playerName === res.playerName && state.answerUnlocked === true);
+
+        const correctOpt = res.correctOption || res.correct;
+
+        // Mirror options on TV
+        ['A', 'B', 'C', 'D'].forEach(opt => {
+          const el = document.getElementById(`tvOpt${opt}`);
+          if (el) {
+            el.className = 'option-btn';
+
+            // 1. Mirror contestant selection (BEFORE locking answer)
+            if (res.selectedOption === opt) {
+              el.classList.add('selected');
+            }
+
+            // 2. Reveal Correct (Green) & Wrong (Red) ONLY AFTER Host locks final answer!
+            if (isAnswerRevealed) {
+              if (correctOpt === opt) {
+                el.classList.add('correct');
+              }
+              if (res.selectedOption === opt && correctOpt && res.selectedOption !== correctOpt) {
+                el.classList.add('wrong');
+              }
+            }
+          }
+        });
+
+        // Sync Lifelines on TV
+        if (res.extra) {
+          const l50 = document.getElementById('tvLl5050');
+          if (l50) l50.style.opacity = res.extra.fiftyFiftyUsed ? '0.35' : '1';
+
+          const lPoll = document.getElementById('tvLlPoll');
+          if (lPoll) lPoll.style.opacity = res.extra.audiencePollUsed ? '0.35' : '1';
+
+          const lExp = document.getElementById('tvLlExpert');
+          if (lExp) lExp.style.opacity = res.extra.askExpertUsed ? '0.35' : '1';
+
+          const lSwap = document.getElementById('tvLlSwap');
+          if (lSwap) lSwap.style.opacity = res.extra.questionSwapUsed ? '0.35' : '1';
+        }
+      }
+    }
+
     function renderTVPrizeLadder(currentQNum) {
       const container = document.getElementById('tvPrizeLadder');
       if (!container) return;
