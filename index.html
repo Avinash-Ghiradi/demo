@@ -775,6 +775,269 @@
       width: 0%;
       transition: width 1s ease;
     }
+
+    /* Dummy Cheque Modal Styling */
+    .cheque-modal-box {
+      max-width: 860px !important;
+      width: 95% !important;
+      padding: 24px !important;
+      background: rgba(13, 31, 24, 0.96) !important;
+      border: 1px solid var(--marigold) !important;
+    }
+
+    .cheque-card {
+      background: linear-gradient(135deg, #fffdfa 0%, #f6edd9 100%);
+      color: #1a2e22;
+      border: 3px double #a9701f;
+      border-radius: 12px;
+      padding: 24px 28px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+      position: relative;
+      overflow: hidden;
+      font-family: var(--sans);
+    }
+
+    .cheque-card::before {
+      content: "SUCCESS SCHOOL INDI · OFFICIAL PRIZE CHEQUE";
+      position: absolute;
+      top: 38%; left: -10%; right: -10%;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: rgba(169, 112, 31, 0.06);
+      transform: rotate(-12deg);
+      text-align: center;
+      pointer-events: none;
+      white-space: nowrap;
+      font-family: var(--serif);
+    }
+
+    .cheque-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid rgba(169, 112, 31, 0.25);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+
+    .cheque-bank-info {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .cheque-logo-img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .cheque-bank-title {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      color: #7a4613;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin: 0;
+      text-align: left;
+    }
+
+    .cheque-branch {
+      font-size: 0.7rem;
+      color: #5b6e61;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-align: left;
+    }
+
+    .cheque-date-box {
+      border: 1px dashed #a9701f;
+      padding: 6px 14px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.7);
+    }
+
+    .cheque-date-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #7a4613;
+      margin-right: 6px;
+    }
+
+    .cheque-date-val {
+      font-family: monospace;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1a2e22;
+      letter-spacing: 2px;
+    }
+
+    .cheque-body {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .cheque-line {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      border-bottom: 1px dashed rgba(169, 112, 31, 0.4);
+      padding-bottom: 4px;
+    }
+
+    .cheque-label {
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: #7a4613;
+      letter-spacing: 0.8px;
+      white-space: nowrap;
+    }
+
+    .cheque-field-name {
+      font-family: 'Fraunces', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #0d1f18;
+      flex-grow: 1;
+      padding-left: 10px;
+      text-align: left;
+    }
+
+    .cheque-bearer {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: #6f8074;
+    }
+
+    .cheque-field-words {
+      font-family: 'Fraunces', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #1b3a2c;
+      font-style: italic;
+      flex-grow: 1;
+      padding-left: 10px;
+      text-align: left;
+    }
+
+    .cheque-bottom-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-top: 10px;
+    }
+
+    .cheque-memo {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #5b6e61;
+      text-align: left;
+    }
+
+    .cheque-micr {
+      font-family: monospace;
+      font-size: 1rem;
+      letter-spacing: 4px;
+      color: #222;
+      margin-top: 4px;
+    }
+
+    .cheque-right-block {
+      display: flex;
+      align-items: flex-end;
+      gap: 24px;
+    }
+
+    .cheque-amount-box {
+      background: #1b3a2c;
+      color: #f8cf8a;
+      border: 2px solid #eda23d;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 1.4rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .cheque-sig-block {
+      text-align: center;
+    }
+
+    .cheque-seal {
+      border: 2px solid #9a4632;
+      color: #9a4632;
+      font-size: 0.65rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 50px;
+      transform: rotate(-8deg);
+      display: inline-block;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+    }
+
+    .cheque-sig-line {
+      border-top: 1px solid #7a4613;
+      padding-top: 4px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #7a4613;
+      letter-spacing: 1px;
+    }
+
+    .cheque-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    /* Print Stylesheet */
+    @media print {
+      body * {
+        visibility: hidden !important;
+      }
+      #chequeModal, #chequeModal *, #printableCheque, #printableCheque * {
+        visibility: visible !important;
+      }
+      #chequeModal {
+        position: fixed !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background: white !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .cheque-modal-box {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+      .cheque-card {
+        box-shadow: none !important;
+        border: 2px solid #000 !important;
+        width: 100% !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1094,6 +1357,60 @@
       <h3>👨‍🏫 Teacher / Expert Advice</h3>
       <p id="expertAdviceText" style="color: var(--chalk); font-size: 1.1rem; margin: 18px 0; font-family: var(--serif);"></p>
       <button class="btn" onclick="closeModal('askExpertModal')">Thank You, Expert!</button>
+    </div>
+  </div>
+
+  <!-- Dummy Prize Cheque Modal -->
+  <div class="modal-overlay" id="chequeModal">
+    <div class="modal-box cheque-modal-box">
+      <div class="cheque-card" id="printableCheque">
+        <div class="cheque-top">
+          <div class="cheque-bank-info">
+            <img id="chequeLogo" src="" class="cheque-logo-img" alt="School Logo" />
+            <div>
+              <h2 class="cheque-bank-title">SUCCESS SCHOOL BANK OF EXCELLENCE</h2>
+              <div class="cheque-branch">INDI BRANCH · TEACHERS' DAY QUIZ CHALLENGE 2026</div>
+            </div>
+          </div>
+          <div class="cheque-date-box">
+            <span class="cheque-date-label">DATE:</span>
+            <span class="cheque-date-val" id="chequeDateVal">05 / 09 / 2026</span>
+          </div>
+        </div>
+
+        <div class="cheque-body">
+          <div class="cheque-line">
+            <span class="cheque-label">PAY TO THE ORDER OF</span>
+            <span class="cheque-field-name" id="chequePayeeVal">Prof. Rahul Sharma</span>
+            <span class="cheque-bearer">OR BEARER</span>
+          </div>
+          <div class="cheque-line">
+            <span class="cheque-label">RUPEES IN WORDS</span>
+            <span class="cheque-field-words" id="chequeWordsVal">Rupees One Crore Only</span>
+          </div>
+          <div class="cheque-bottom-row">
+            <div class="cheque-memo">
+              <span>FOR: TEACHERS' DAY QUIZ 2026</span>
+              <div class="cheque-micr">⑈ 7 4 0 2 0 2 6 ⑈ 4 1 1 0 2 4 0 0 2 ⑈ 3 1</div>
+            </div>
+            <div class="cheque-right-block">
+              <div class="cheque-amount-box">
+                <span>₹</span>
+                <strong id="chequeAmountVal">1,00,00,000/-</strong>
+              </div>
+              <div class="cheque-sig-block">
+                <div class="cheque-seal">OFFICIAL WINNER</div>
+                <div class="cheque-sig-line">AUTHORIZED SIGNATORY</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cheque-actions no-print">
+        <button class="btn btn-pulse" onclick="printCheque()">🖨️ Print Prize Cheque</button>
+        <button class="btn btn-secondary" onclick="closeModal('chequeModal'); resetToPlayerSelect();">✖️ Close & Return</button>
+      </div>
     </div>
   </div>
 
@@ -1915,10 +2232,9 @@
 
         if (state.currentQNum === 15) {
           setTimeout(() => {
-            alert(`🎉 CONGRATULATIONS! ${state.playerName} HAS WON ₹1 CRORE!`);
             saveState('Completed');
-            resetToPlayerSelect();
-          }, 2000);
+            showDummyCheque(state.playerName, 10000000);
+          }, 1800);
         } else {
           // UNLOCK & ENABLE NEXT QUESTION BUTTON AFTER CORRECT ANSWER REVEAL!
           const nextBtn = document.getElementById('nextQuestionBtn');
@@ -1938,11 +2254,10 @@
         audio.playWrong();
 
         setTimeout(() => {
-          alert(`❌ Incorrect! Game Over. Total Secured Money: ₹${state.securedAmount.toLocaleString('en-IN')}`);
           state.score = state.securedAmount;
           saveState('Lost');
-          resetToPlayerSelect();
-        }, 2200);
+          showDummyCheque(state.playerName, state.securedAmount);
+        }, 2000);
       }
     }
 
@@ -2008,10 +2323,9 @@
         if (state.timerSeconds <= 0) {
           stopTimer();
           audio.playWrong();
-          alert(`⏰ Time's Up! Total Secured Money: ₹${state.securedAmount.toLocaleString('en-IN')}`);
           state.score = state.securedAmount;
           saveState('Lost');
-          resetToPlayerSelect();
+          showDummyCheque(state.playerName, state.securedAmount);
         }
       }, 1000);
     }
@@ -2142,8 +2456,7 @@
         state.securedAmount = state.score;
         saveState('Completed');
         triggerCelebrationBurst(true);
-        alert(`🏆 You have chosen to quit! Final Winnings: ₹${state.score.toLocaleString('en-IN')}`);
-        resetToPlayerSelect();
+        showDummyCheque(state.playerName, state.score);
       }
     }
 
@@ -2586,6 +2899,67 @@
       const res = await callBackend('clearAllGameStates', state.adminPin);
       alert(res.message || res.error);
       loadAdminQuestions();
+    }
+
+    // ============================================================
+    // DUMMY CHEQUE DISPLAY & PRINT
+    // ============================================================
+    function numberToWordsINR(num) {
+      if (!num || num === 0) return "Zero Rupees Only";
+      const a = ['', 'One ', 'Two ', 'Three ', 'Four ', 'Five ', 'Six ', 'Seven ', 'Eight ', 'Nine ', 'Ten ', 'Eleven ', 'Twelve ', 'Thirteen ', 'Fourteen ', 'Fifteen ', 'Sixteen ', 'Seventeen ', 'Eighteen ', 'Nineteen '];
+      const b = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+      
+      function inWords(n) {
+        if (n < 20) return a[n];
+        if (n < 100) return b[Math.floor(n / 10)] + (n % 10 ? ' ' + a[n % 10] : ' ');
+        if (n < 1000) return a[Math.floor(n / 100)] + 'Hundred ' + (n % 100 ? inWords(n % 100) : '');
+        return '';
+      }
+      
+      let str = '';
+      const crore = Math.floor(num / 10000000);
+      num %= 10000000;
+      const lakh = Math.floor(num / 100000);
+      num %= 100000;
+      const thousand = Math.floor(num / 1000);
+      num %= 1000;
+      const hundred = num;
+      
+      if (crore > 0) str += inWords(crore) + 'Crore ';
+      if (lakh > 0) str += inWords(lakh) + 'Lakh ';
+      if (thousand > 0) str += inWords(thousand) + 'Thousand ';
+      if (hundred > 0) str += inWords(hundred);
+      
+      return str.trim() + ' Rupees Only';
+    }
+
+    function showDummyCheque(playerName, amount) {
+      const pName = playerName || 'Honorable Teacher';
+      const amtStr = (amount || 0).toLocaleString('en-IN');
+      const amtWords = numberToWordsINR(amount || 0);
+      
+      const today = new Date();
+      const dd = String(today.getDate()).padStart(2, '0');
+      const mm = String(today.getMonth() + 1).padStart(2, '0');
+      const yyyy = today.getFullYear();
+
+      // Sync logo from main app header to cheque header
+      const mainLogo = document.getElementById('appHeaderLogo');
+      const chequeLogo = document.getElementById('chequeLogo');
+      if (mainLogo && chequeLogo && mainLogo.src) {
+        chequeLogo.src = mainLogo.src;
+      }
+
+      document.getElementById('chequeDate').innerText = `${dd} / ${mm} / ${yyyy}`;
+      document.getElementById('chequePayee').innerText = pName;
+      document.getElementById('chequeAmountWords').innerText = amtWords;
+      document.getElementById('chequeAmountNumber').innerText = `₹ ${amtStr}/-`;
+      
+      openModal('chequeModal');
+    }
+
+    function printCheque() {
+      window.print();
     }
 
     // Modal Helpers
