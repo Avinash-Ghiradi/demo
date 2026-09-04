@@ -1,0 +1,2592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base target="_top">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PADHAYA BAHUT, AB JAWAB DO! · Teachers' Day Quiz Challenge 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,340;9..144,460;9..144,560;9..144,680&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- PeerJS CDN for instant P2P WebRTC Multi-Device & Multi-Browser Sync -->
+  <script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
+  <!-- Canvas Confetti CDN for Celebration Burst -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <!-- SheetJS XLSX CDN for Excel Import & Sample Template Export -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+  <style>
+    :root {
+      /* ---- Chalkboard + Marigold Garland Palette ---- */
+      --bg-deep: #0d1f18;
+      --bg-mid: #142c22;
+      --board: #1b3a2c;
+      --glass: rgba(246, 241, 228, 0.045);
+      --glass-strong: rgba(246, 241, 228, 0.075);
+      --glass-border: rgba(237, 162, 61, 0.22);
+      --glass-border-strong: rgba(237, 162, 61, 0.45);
+
+      --marigold-hi: #f8cf8a;
+      --marigold: #eda23d;
+      --marigold-deep: #a9701f;
+      --maroon: #9a4632;
+
+      --chalk: #f6f1e4;
+      --chalk-dim: #b9c4b6;
+      --chalk-faint: #6f8074;
+
+      --ok: #8fe0ab;
+      --ok-bg: rgba(120, 210, 150, 0.14);
+      --ok-border: rgba(120, 210, 150, 0.40);
+      --bad: #e8998f;
+      --bad-bg: rgba(214, 90, 80, 0.14);
+      --bad-border: rgba(214, 90, 80, 0.40);
+      --info: #a4c3e0;
+      --info-bg: rgba(120, 165, 224, 0.12);
+      --info-border: rgba(120, 165, 224, 0.35);
+
+      --r-lg: 26px;
+      --r-md: 18px;
+      --r-sm: 12px;
+      --r-pill: 999px;
+
+      --serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+      --sans: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--sans); }
+
+    body {
+      background:
+        radial-gradient(ellipse 900px 520px at 12% -4%, rgba(237, 162, 61, 0.08), transparent 60%),
+        radial-gradient(ellipse 760px 520px at 100% 104%, rgba(237, 162, 61, 0.06), transparent 55%),
+        radial-gradient(circle, rgba(246, 241, 228, 0.028) 1px, transparent 1.3px) 0 0 / 26px 26px,
+        linear-gradient(180deg, var(--bg-mid), var(--bg-deep));
+      min-height: 100vh;
+      padding: 20px;
+      color: var(--chalk);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 1150px;
+      width: 100%;
+      background: var(--glass);
+      backdrop-filter: blur(22px) saturate(140%);
+      -webkit-backdrop-filter: blur(22px) saturate(140%);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--r-lg);
+      padding: 30px 34px;
+      box-shadow:
+        0 40px 80px rgba(0, 0, 0, 0.55),
+        0 1px 0 rgba(255, 255, 255, 0.05) inset,
+        0 0 0 1px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 6%; right: 6%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(248, 207, 138, 0.55), transparent);
+      pointer-events: none;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding-bottom: 20px;
+      margin-bottom: 28px;
+      position: relative;
+    }
+
+    /* Festive Toran Garland SVG bottom border */
+    .header::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 16px;
+      background-repeat: repeat-x;
+      background-position: bottom left;
+      background-size: 40px 16px;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='16' viewBox='0 0 40 16'><path d='M0 1 Q20 15 40 1' stroke='%23a9701f' stroke-width='1.2' fill='none' opacity='0.55'/><circle cx='20' cy='9' r='3.6' fill='%23eda23d'/><circle cx='20' cy='9' r='1.4' fill='%239a4632'/></svg>");
+    }
+
+    .header-title-group h1 {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 1.95rem;
+      letter-spacing: 0.2px;
+      color: var(--marigold-hi);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header-title-group small {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1.6px;
+      color: var(--marigold);
+      font-weight: 600;
+      border: 1px solid var(--glass-border-strong);
+      padding: 4px 12px;
+      border-radius: var(--r-pill);
+      display: inline-block;
+      margin-top: 4px;
+    }
+
+    .header-right { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+
+    .tabs { display: flex; gap: 8px; flex-wrap: wrap; background: rgba(0, 0, 0, 0.25); border: 1px solid var(--glass-border); border-radius: var(--r-pill); padding: 4px; }
+
+    .tab-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--chalk-dim);
+      padding: 7px 18px;
+      border-radius: var(--r-pill);
+      font-weight: 500;
+      font-size: 0.82rem;
+      letter-spacing: 0.2px;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .tab-btn:hover { border-color: var(--glass-border); color: var(--chalk); }
+
+    .tab-btn.active {
+      background: rgba(237, 162, 61, 0.16);
+      border-color: var(--marigold-deep);
+      color: var(--marigold-hi);
+    }
+
+    .tab-content { display: none; animation: fadeSlide 0.35s ease; }
+    .tab-content.active { display: block; }
+
+    @keyframes fadeSlide {
+      0% { opacity: 0.2; transform: translateY(8px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Buttons */
+    .btn {
+      background: linear-gradient(150deg, var(--marigold-hi), var(--marigold) 55%, var(--marigold-deep));
+      border: none;
+      color: #2c1608;
+      font-weight: 600;
+      padding: 12px 28px;
+      border-radius: var(--r-pill);
+      font-size: 0.92rem;
+      cursor: pointer;
+      transition: 0.2s ease;
+      box-shadow: 0 8px 20px rgba(169, 112, 31, 0.28);
+      letter-spacing: 0.2px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 12px 26px rgba(169, 112, 31, 0.38); }
+    .btn:disabled { opacity: 0.35; cursor: not-allowed; transform: none; box-shadow: none; filter: grayscale(0.8); }
+
+    .btn-secondary {
+      background: rgba(246, 241, 228, 0.04);
+      border: 1px solid rgba(246, 241, 228, 0.16);
+      color: var(--chalk-dim);
+      box-shadow: none;
+    }
+    .btn-secondary:hover:not(:disabled) {
+      background: rgba(246, 241, 228, 0.08);
+      border-color: var(--glass-border-strong);
+      color: var(--chalk);
+    }
+
+    .btn-danger {
+      background: var(--bad-bg);
+      border: 1px solid var(--bad-border);
+      color: var(--bad);
+      box-shadow: none;
+    }
+    .btn-danger:hover:not(:disabled) { background: rgba(214, 90, 80, 0.22); }
+
+    .btn-sm { padding: 6px 14px; font-size: 0.78rem; }
+
+    /* Pulsing glow animation for enabled Next Question button */
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 0 0 rgba(237, 162, 61, 0.6); }
+      70% { box-shadow: 0 0 0 14px rgba(237, 162, 61, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(237, 162, 61, 0); }
+    }
+    .btn-pulse:not(:disabled) {
+      animation: pulseGlow 1.8s infinite;
+      border-color: var(--marigold-hi) !important;
+      color: var(--marigold-hi) !important;
+    }
+
+    /* Player Select View */
+    .player-select { text-align: center; padding: 40px 10px 30px; }
+    .player-select h2 {
+      font-family: var(--serif);
+      color: var(--marigold-hi);
+      font-weight: 500;
+      font-size: 2.1rem;
+      margin-bottom: 12px;
+    }
+    .player-select p { color: var(--chalk-dim); margin-bottom: 24px; font-size: 0.98rem; }
+
+    .player-select input {
+      background: rgba(246, 241, 228, 0.05);
+      border: 1px solid var(--glass-border);
+      padding: 14px 22px;
+      border-radius: var(--r-pill);
+      width: 320px;
+      max-width: 90%;
+      font-size: 1.05rem;
+      color: var(--chalk);
+      transition: 0.25s;
+      outline: none;
+      text-align: center;
+    }
+
+    .player-select input:focus {
+      border-color: var(--marigold-deep);
+      box-shadow: 0 0 0 4px rgba(237, 162, 61, 0.14);
+    }
+
+    .btn-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 24px; }
+
+    /* Quiz Game Area Layout */
+    .game-layout {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 24px;
+    }
+
+    @media (max-width: 860px) {
+      .game-layout { grid-template-columns: 1fr; }
+    }
+
+    /* Game Info Bar */
+    .game-info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      background: rgba(0, 0, 0, 0.28);
+      padding: 14px 22px;
+      border-radius: var(--r-md);
+      margin-bottom: 20px;
+      border: 1px solid var(--glass-border);
+    }
+
+    .player-info h3 { font-size: 1.1rem; color: var(--chalk); font-weight: 600; }
+    .player-info span { color: var(--marigold-hi); font-weight: 700; }
+
+    .score-badge {
+      background: rgba(237, 162, 61, 0.12);
+      border: 1px solid var(--glass-border-strong);
+      padding: 8px 18px;
+      border-radius: var(--r-pill);
+      color: var(--marigold-hi);
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    /* Timer Bar */
+    .timer-container {
+      margin-bottom: 20px;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 12px 18px;
+      border-radius: var(--r-md);
+      border: 1px solid rgba(246, 241, 228, 0.08);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .timer-clock {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(237, 162, 61, 0.15);
+      border: 2px solid var(--marigold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--marigold-hi);
+      flex-shrink: 0;
+    }
+
+    .timer-bar-wrap {
+      flex: 1;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: var(--r-pill);
+      overflow: hidden;
+    }
+
+    .timer-bar {
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(90deg, var(--ok), var(--marigold), var(--bad));
+      transition: width 1s linear;
+    }
+
+    /* Question Box */
+    .question-box {
+      background: var(--board);
+      border: 1px solid var(--glass-border-strong);
+      border-radius: var(--r-md);
+      padding: 28px 30px;
+      margin-bottom: 20px;
+      min-height: 140px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.4) inset;
+      position: relative;
+    }
+
+    .question-tag {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--marigold);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .question-text {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      line-height: 1.45;
+      color: var(--chalk);
+    }
+
+    /* KBC Options Grid */
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 600px) {
+      .options-grid { grid-template-columns: 1fr; }
+    }
+
+    .option-btn {
+      background: rgba(246, 241, 228, 0.035);
+      border: 1.5px solid var(--glass-border);
+      border-radius: var(--r-md);
+      padding: 16px 20px;
+      color: var(--chalk);
+      font-size: 1.02rem;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .option-btn:hover:not(:disabled) {
+      background: rgba(237, 162, 61, 0.10);
+      border-color: var(--marigold);
+      transform: translateY(-2px);
+    }
+
+    .option-prefix {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(237, 162, 61, 0.15);
+      border: 1px solid var(--marigold-deep);
+      color: var(--marigold-hi);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .option-btn.selected {
+      background: rgba(237, 162, 61, 0.22);
+      border-color: var(--marigold-hi);
+      box-shadow: 0 0 16px rgba(237, 162, 61, 0.35);
+    }
+
+    .option-btn.correct {
+      background: var(--ok-bg) !important;
+      border-color: var(--ok) !important;
+      color: #bbf2d0 !important;
+      box-shadow: 0 0 20px rgba(143, 224, 171, 0.4) !important;
+    }
+
+    .option-btn.wrong {
+      background: var(--bad-bg) !important;
+      border-color: var(--bad) !important;
+      color: #f8c2bc !important;
+    }
+
+    .option-btn.disabled-5050 {
+      opacity: 0.18;
+      pointer-events: none;
+      filter: grayscale(1);
+    }
+
+    /* Lifelines Bar */
+    .lifelines-bar {
+      background: rgba(0, 0, 0, 0.22);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--r-md);
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-around;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .lifeline-btn {
+      background: rgba(246, 241, 228, 0.04);
+      border: 1px solid var(--glass-border);
+      color: var(--chalk);
+      padding: 8px 16px;
+      border-radius: var(--r-pill);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .lifeline-btn:hover:not(:disabled) {
+      background: rgba(237, 162, 61, 0.15);
+      border-color: var(--marigold);
+    }
+
+    .lifeline-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      text-decoration: line-through;
+      border-color: rgba(255,255,255,0.05);
+    }
+
+    /* Prize Money Tree / Ladder */
+    .prize-tree {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--r-md);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .prize-title {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--marigold-hi);
+      font-weight: 700;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .prize-step {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 12px;
+      border-radius: var(--r-sm);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--chalk-dim);
+      transition: 0.2s;
+    }
+
+    .prize-step.padav {
+      color: var(--marigold-hi);
+      background: rgba(237, 162, 61, 0.08);
+      border: 1px solid rgba(237, 162, 61, 0.2);
+    }
+
+    .prize-step.current {
+      background: linear-gradient(90deg, var(--marigold-deep), var(--marigold)) !important;
+      color: #1a0f05 !important;
+      font-weight: 800;
+      transform: scale(1.02);
+      box-shadow: 0 4px 12px rgba(237, 162, 61, 0.3);
+    }
+
+    .prize-step.achieved {
+      color: var(--ok);
+    }
+
+    /* TV Screen View */
+    .tv-view {
+      text-align: center;
+      padding: 20px 10px;
+    }
+
+    .tv-status-badge {
+      display: inline-block;
+      background: rgba(237, 162, 61, 0.15);
+      border: 1px solid var(--marigold);
+      color: var(--marigold-hi);
+      padding: 6px 20px;
+      border-radius: var(--r-pill);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+    }
+
+    .tv-question-box {
+      background: var(--board);
+      border: 2px solid var(--marigold);
+      border-radius: var(--r-lg);
+      padding: 36px 40px;
+      margin-bottom: 30px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    }
+
+    .tv-question-text {
+      font-family: var(--serif);
+      font-size: 1.85rem;
+      line-height: 1.4;
+      color: var(--chalk);
+    }
+
+    .tv-options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto 30px;
+    }
+
+    .tv-option {
+      background: rgba(246, 241, 228, 0.05);
+      border: 2px solid var(--glass-border-strong);
+      border-radius: var(--r-md);
+      padding: 22px 28px;
+      font-size: 1.25rem;
+      font-weight: 600;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .tv-option.selected {
+      background: rgba(237, 162, 61, 0.3) !important;
+      border-color: var(--marigold-hi) !important;
+    }
+
+    .tv-option.correct {
+      background: var(--ok-bg) !important;
+      border-color: var(--ok) !important;
+      color: #bbf2d0 !important;
+      box-shadow: 0 0 24px rgba(143, 224, 171, 0.4) !important;
+    }
+
+    /* Admin Panel */
+    .admin-card {
+      background: rgba(0,0,0,0.25);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--r-md);
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .admin-card h3 {
+      font-family: var(--serif);
+      color: var(--marigold-hi);
+      font-size: 1.25rem;
+      margin-bottom: 16px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group.full { grid-column: span 2; }
+
+    .form-group label {
+      font-size: 0.82rem;
+      color: var(--chalk-dim);
+      font-weight: 600;
+    }
+
+    .form-group input, .form-group select, .form-group textarea {
+      background: rgba(246, 241, 228, 0.05);
+      border: 1px solid var(--glass-border);
+      padding: 10px 14px;
+      border-radius: var(--r-sm);
+      color: var(--chalk);
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--marigold);
+    }
+
+    /* Question Table */
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: var(--r-sm);
+      border: 1px solid var(--glass-border);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.88rem;
+    }
+
+    th {
+      background: rgba(237, 162, 61, 0.15);
+      color: var(--marigold-hi);
+      padding: 12px 16px;
+      font-weight: 700;
+    }
+
+    td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(246, 241, 228, 0.06);
+      color: var(--chalk-dim);
+    }
+
+    tr:hover td { background: rgba(255,255,255,0.02); }
+
+    /* DOM Particle Fallback for Confetti */
+    @keyframes confettiFall {
+      0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(105vh) rotate(720deg); opacity: 0; }
+    }
+    .dom-confetti-particle {
+      position: fixed;
+      top: -10px;
+      width: 12px; height: 12px;
+      border-radius: 3px;
+      z-index: 9999;
+      pointer-events: none;
+      animation: confettiFall linear forwards;
+    }
+
+    /* Modals */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-box {
+      background: var(--bg-mid);
+      border: 1.5px solid var(--glass-border-strong);
+      border-radius: var(--r-lg);
+      padding: 30px;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.7);
+      text-align: center;
+    }
+
+    .modal-box h3 {
+      font-family: var(--serif);
+      color: var(--marigold-hi);
+      font-size: 1.5rem;
+      margin-bottom: 14px;
+    }
+
+    .poll-bar-group {
+      margin: 12px 0;
+      text-align: left;
+    }
+
+    .poll-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.88rem;
+      color: var(--chalk);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .poll-progress {
+      height: 16px;
+      background: rgba(255,255,255,0.08);
+      border-radius: var(--r-pill);
+      overflow: hidden;
+    }
+
+    .poll-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--marigold-deep), var(--marigold));
+      width: 0%;
+      transition: width 1s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+        <img src="school_logo.png" alt="SUCCESS SCHOOL, INDI Logo" style="max-height: 62px; width: auto; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.6));" />
+        <div class="header-title-group">
+          <h1>🎓 PADHAYA BAHUT, AB JAWAB DO!</h1>
+          <small>SUCCESS SCHOOL, INDI · Teachers' Day Quiz Challenge 2026</small>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <div class="tabs">
+          <button class="tab-btn active" onclick="switchTab('gameView')">🎮 Quiz Hotseat</button>
+          <button class="tab-btn" onclick="switchTab('tvView')">📺 Public TV Screen</button>
+          <button class="tab-btn" onclick="switchTab('leaderboardView')">🏆 Leaderboard</button>
+          <button class="tab-btn" onclick="switchTab('adminView')">⚙️ Admin Panel</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- TAB 1: GAME VIEW -->
+    <div id="gameView" class="tab-content active">
+      <!-- State 1: Enter / Select Player -->
+      <div id="playerSelectSection" class="player-select">
+        <div style="margin-bottom: 22px; text-align: center;">
+          <img src="school_logo.png" alt="SUCCESS SCHOOL, INDI" style="max-width: 520px; width: 92%; height: auto; filter: drop-shadow(0 8px 24px rgba(0,0,0,0.7));" />
+        </div>
+        <h2>Welcome to the Hotseat!</h2>
+        <p style="color: var(--marigold-hi); font-weight: 600; font-size: 0.95rem; margin-bottom: 20px;">SUCCESS SCHOOL, INDI · Pin Code - 586 209, Dist: Vijayapur, Karnataka</p>
+        <input type="text" id="playerNameInput" placeholder="Enter Teacher / Player Name" />
+        <div class="btn-group">
+          <button class="btn" onclick="startOrResumeGame()">➕ Add Contestant</button>
+          <button class="btn btn-secondary" onclick="pushCurrentToTV()">📺 Push to Public TV</button>
+        </div>
+      </div>
+
+      <!-- State 2: Active Quiz Area -->
+      <div id="quizAreaSection" style="display: none;">
+        <div class="game-info">
+          <div class="player-info">
+            <h3>Contestant: <span id="displayPlayerName">-</span></h3>
+          </div>
+          <div class="score-badge">
+            Current Level: Q<span id="currentQNum">1</span> / 15 (₹<span id="currentScoreVal">0</span>)
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+            <button class="btn btn-sm btn-pulse" id="startResumeHeaderBtn" onclick="startOrResumeHeaderGame()" style="background: linear-gradient(150deg, var(--marigold-hi), var(--marigold)); color: #2c1608; font-weight: 700;" title="Start / Resume Game">🚀 Start / Resume Game</button>
+            <button class="btn btn-secondary btn-sm" id="nextQHeaderBtn" onclick="nextQuestion()" disabled>⏭️ Next Q</button>
+            <button class="btn btn-secondary btn-sm" onclick="triggerCelebrationBurst(true)" title="Trigger Celebration Burst">🎉 Celebration</button>
+            <button class="btn btn-secondary btn-sm" onclick="pushCurrentToTV()">📺 Push to TV</button>
+            <button class="btn btn-secondary btn-sm" onclick="quitAndTakeMoney()">💰 Quit & Claim</button>
+          </div>
+        </div>
+
+        <div class="game-layout">
+          <!-- Main Quiz Column -->
+          <div class="main-quiz">
+            <!-- Timer Bar -->
+            <div class="timer-container">
+              <div class="timer-clock" id="timerClock">60</div>
+              <div class="timer-bar-wrap">
+                <div class="timer-bar" id="timerBar"></div>
+              </div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="question-box">
+              <div class="question-tag" id="difficultyTag">EASY LEVEL · Q1</div>
+              <div class="question-text" id="questionText">Loading Question...</div>
+            </div>
+
+            <!-- Options Grid -->
+            <div class="options-grid" id="optionsGrid">
+              <button class="option-btn" id="optA" onclick="selectOption('A')">
+                <span class="option-prefix">A</span> <span id="optAText">Option A</span>
+              </button>
+              <button class="option-btn" id="optB" onclick="selectOption('B')">
+                <span class="option-prefix">B</span> <span id="optBText">Option B</span>
+              </button>
+              <button class="option-btn" id="optC" onclick="selectOption('C')">
+                <span class="option-prefix">C</span> <span id="optCText">Option C</span>
+              </button>
+              <button class="option-btn" id="optD" onclick="selectOption('D')">
+                <span class="option-prefix">D</span> <span id="optDText">Option D</span>
+              </button>
+            </div>
+
+            <!-- Confirm / Lock Action Button & Next Question Button -->
+            <div style="text-align: center; margin-bottom: 20px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+              <button class="btn" id="lockAnswerBtn" onclick="confirmAnswer()" disabled>🔒 Lock Final Answer</button>
+              <button class="btn btn-secondary" id="nextQuestionBtn" onclick="nextQuestion()" disabled>⏭️ Next Question</button>
+            </div>
+
+            <!-- Lifelines Bar -->
+            <div class="lifelines-bar">
+              <button class="lifeline-btn" id="ll5050" onclick="use5050()">⚡ 50:50</button>
+              <button class="lifeline-btn" id="llPoll" onclick="useAudiencePoll()">📊 Audience Poll</button>
+              <button class="lifeline-btn" id="llExpert" onclick="useAskExpert()">👨‍🏫 Ask Expert</button>
+              <button class="lifeline-btn" id="llSwap" onclick="useQuestionSwap()">🔄 Swap Question</button>
+            </div>
+          </div>
+
+          <!-- Sidebar: Prize Ladder -->
+          <div class="prize-tree" id="prizeLadder">
+            <div class="prize-title">🏆 Prize Ladder</div>
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: PUBLIC TV SCREEN VIEW -->
+    <div id="tvView" class="tab-content">
+      <div class="tv-view">
+        <div style="margin-bottom: 18px; text-align: center;">
+          <img src="school_logo.png" alt="SUCCESS SCHOOL, INDI" style="max-height: 75px; width: auto; filter: drop-shadow(0 6px 18px rgba(0,0,0,0.7));" />
+        </div>
+        <div style="display: flex; justify-content: center; align-items: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap;">
+          <div class="tv-status-badge" id="tvStatusBanner">LIVE TV BROADCAST · WAITING FOR HOST</div>
+          <div class="tv-status-badge" id="tvSyncStatus" style="background: rgba(143, 224, 171, 0.12); border-color: var(--ok); color: #bbf2d0;">📡 PeerJS P2P: Initializing...</div>
+        </div>
+
+        <!-- Room Connect Bar for Multi-Device / Multi-PC Sync -->
+        <div style="margin-bottom: 24px; display: flex; justify-content: center; gap: 8px; align-items: center; flex-wrap: wrap; background: rgba(0,0,0,0.25); padding: 10px 18px; border-radius: var(--r-pill); border: 1px solid var(--glass-border);">
+          <span style="font-size: 0.85rem; color: var(--chalk-dim); font-weight: 600;">TV Sync Code:</span>
+          <input type="text" id="tvRoomCodeInput" value="teachers-day-quiz-2026" style="background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); padding: 6px 14px; border-radius: var(--r-pill); color: var(--marigold-hi); font-size: 0.9rem; font-weight: 700; width: 220px; text-align: center; outline: none;" />
+          <button class="btn btn-secondary btn-sm" onclick="connectTVToRoom()">🔗 Connect TV to Host PC</button>
+          <button class="btn btn-secondary btn-sm" onclick="triggerCelebrationBurst(true)">🎉 Burst Confetti</button>
+        </div>
+
+        <div id="tvActiveContent" style="display: none;">
+          <div class="tv-layout" style="display: grid; grid-template-columns: 1fr 280px; gap: 24px; align-items: start; text-align: left;">
+            <div class="tv-main-col">
+              <div style="margin-bottom: 16px; font-size: 1.15rem; color: var(--marigold-hi); font-weight: 700; background: rgba(0,0,0,0.3); padding: 12px 20px; border-radius: var(--r-md); border: 1px solid var(--glass-border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                <span>👤 Contestant: <span id="tvPlayerName" style="color: var(--chalk); font-weight: 800;">Player</span></span>
+                <span>💰 Level: Q<span id="tvQNum">1</span> / 15 (₹<span id="tvScore">0</span>)</span>
+              </div>
+
+              <div class="tv-question-box">
+                <div class="tv-question-text" id="tvQuestionText">Question text appearing here...</div>
+              </div>
+
+              <div class="tv-options-grid">
+                <div class="tv-option" id="tvOptA"><span class="option-prefix">A</span> <span id="tvOptAText">Option A</span></div>
+                <div class="tv-option" id="tvOptB"><span class="option-prefix">B</span> <span id="tvOptBText">Option B</span></div>
+                <div class="tv-option" id="tvOptC"><span class="option-prefix">C</span> <span id="tvOptCText">Option C</span></div>
+                <div class="tv-option" id="tvOptD"><span class="option-prefix">D</span> <span id="tvOptDText">Option D</span></div>
+              </div>
+            </div>
+
+            <!-- TV Prize Ladder Sidebar -->
+            <div class="prize-tree" id="tvPrizeLadder" style="box-shadow: 0 12px 35px rgba(0,0,0,0.6);">
+              <div class="prize-title">🏆 Prize Ladder</div>
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: LEADERBOARD VIEW -->
+    <div id="leaderboardView" class="tab-content">
+      <div class="admin-card">
+        <h3>🏆 Teachers' Day Quiz Hall of Fame</h3>
+        <p style="color: var(--chalk-dim); margin-bottom: 16px;">Top contestants and total prize money secured.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Contestant Name</th>
+                <th>Status</th>
+                <th>Prize Money Secured</th>
+              </tr>
+            </thead>
+            <tbody id="leaderboardBody">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: ADMIN PANEL VIEW -->
+    <div id="adminView" class="tab-content">
+      <div id="adminAuthSection" class="player-select">
+        <h2>Admin Authentication</h2>
+        <p>Enter 4-digit Admin PIN (Default: 1234)</p>
+        <input type="password" id="adminPinInput" placeholder="Enter PIN" maxlength="10" />
+        <div class="btn-group">
+          <button class="btn" onclick="authenticateAdmin()">Unlock Admin Panel</button>
+        </div>
+      </div>
+
+      <div id="adminPanelSection" style="display: none;">
+        <!-- Excel / CSV Bulk Upload Form -->
+        <div class="admin-card">
+          <h3>📊 Upload Questions from Excel / CSV Sheet</h3>
+          <p style="color: var(--chalk-dim); font-size: 0.88rem; margin-bottom: 16px; line-height: 1.5;">
+            Upload an Excel workbook (<code style="color: var(--marigold-hi)">.xlsx</code>, <code style="color: var(--marigold-hi)">.xls</code>) or <code style="color: var(--marigold-hi)">.csv</code> file. Once questions are allotted to a contestant, they are automatically <strong>locked</strong> and will never appear for another contestant!
+          </p>
+
+          <div style="background: rgba(0, 0, 0, 0.25); border: 2px dashed var(--glass-border-strong); border-radius: var(--r-md); padding: 22px; text-align: center; margin-bottom: 16px;">
+            <input type="file" id="excelFileInput" accept=".xlsx, .xls, .csv" style="display: none;" onchange="handleExcelFileSelect(event)" />
+            <button class="btn btn-secondary" onclick="document.getElementById('excelFileInput').click()">📁 Choose Excel / CSV File</button>
+            <div id="excelFileNameDisplay" style="margin-top: 10px; font-weight: 600; color: var(--marigold-hi); font-size: 0.9rem;">No file selected</div>
+          </div>
+
+          <div id="excelPreviewBox" style="display: none; background: rgba(0,0,0,0.35); border: 1px solid var(--glass-border); border-radius: var(--r-sm); padding: 14px 18px; margin-bottom: 16px; font-size: 0.88rem;">
+            <div style="font-weight: 700; color: var(--marigold-hi); margin-bottom: 6px;" id="excelPreviewSummary">Previewing Excel Data...</div>
+            <div style="color: var(--chalk-dim);" id="excelPreviewDetails"></div>
+          </div>
+
+          <div class="btn-group" style="justify-content: flex-start;">
+            <button class="btn" id="uploadExcelBtn" onclick="processAndUploadExcel()" disabled>📤 Import & Save Questions</button>
+            <button class="btn btn-secondary" onclick="downloadSampleExcelTemplate()">📥 Download Sample Excel Template</button>
+          </div>
+        </div>
+
+        <!-- Single Question Add Form -->
+        <div class="admin-card">
+          <h3>➕ Add New Question to Pool</h3>
+          <div class="form-grid">
+            <div class="form-group full">
+              <label>Question Text</label>
+              <input type="text" id="addQText" placeholder="e.g. Who wrote the Indian National Anthem?" />
+            </div>
+            <div class="form-group">
+              <label>Option A</label>
+              <input type="text" id="addOptA" placeholder="Option A" />
+            </div>
+            <div class="form-group">
+              <label>Option B</label>
+              <input type="text" id="addOptB" placeholder="Option B" />
+            </div>
+            <div class="form-group">
+              <label>Option C</label>
+              <input type="text" id="addOptC" placeholder="Option C" />
+            </div>
+            <div class="form-group">
+              <label>Option D</label>
+              <input type="text" id="addOptD" placeholder="Option D" />
+            </div>
+            <div class="form-group">
+              <label>Correct Option (A, B, C, or D)</label>
+              <select id="addCorrectOpt">
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Difficulty Pool</label>
+              <select id="addDifficulty">
+                <option value="Easy">Easy (Q1 - Q5)</option>
+                <option value="Medium">Medium (Q6 - Q10)</option>
+                <option value="Hard">Hard (Q11 - Q15)</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn" onclick="submitAddQuestion()">Save Question</button>
+        </div>
+
+        <!-- System Controls & Pool Reset -->
+        <div class="admin-card">
+          <h3>⚡ System Controls & Pool Management</h3>
+          <div class="btn-group" style="justify-content: flex-start;">
+            <button class="btn btn-secondary" onclick="adminResetPool()">🔄 Reset Question Locks / Pool</button>
+            <button class="btn btn-danger" onclick="adminClearGameStates()">🗑️ Clear All Game States</button>
+          </div>
+        </div>
+
+        <!-- Question Bank List -->
+        <div class="admin-card">
+          <h3>📚 Question Pool Bank</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Question</th>
+                  <th>Difficulty</th>
+                  <th>Correct</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="questionTableBody">
+                <!-- Rendered via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODALS -->
+  <!-- Audience Poll Modal -->
+  <div class="modal-overlay" id="audiencePollModal">
+    <div class="modal-box">
+      <h3>📊 Audience Poll Results</h3>
+      <div id="pollBarsContainer"></div>
+      <div style="margin-top: 20px;">
+        <button class="btn" onclick="closeModal('audiencePollModal')">Got It</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ask Expert Modal -->
+  <div class="modal-overlay" id="askExpertModal">
+    <div class="modal-box">
+      <h3>👨‍🏫 Teacher / Expert Advice</h3>
+      <p id="expertAdviceText" style="color: var(--chalk); font-size: 1.1rem; margin: 18px 0; font-family: var(--serif);"></p>
+      <button class="btn" onclick="closeModal('askExpertModal')">Thank You, Expert!</button>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT ENGINE -->
+  <script>
+    // ============================================================
+    // PRIZE LADDER DEFINITION
+    // ============================================================
+    const PRIZES = [
+      { q: 1, amount: 1000, padav: false },
+      { q: 2, amount: 2000, padav: false },
+      { q: 3, amount: 3000, padav: false },
+      { q: 4, amount: 5000, padav: false },
+      { q: 5, amount: 10000, padav: true, title: "1st Padav" },
+      { q: 6, amount: 20000, padav: false },
+      { q: 7, amount: 40000, padav: false },
+      { q: 8, amount: 80000, padav: false },
+      { q: 9, amount: 160000, padav: false },
+      { q: 10, amount: 320000, padav: true, title: "2nd Padav" },
+      { q: 11, amount: 640000, padav: false },
+      { q: 12, amount: 1250000, padav: false },
+      { q: 13, amount: 2500000, padav: false },
+      { q: 14, amount: 5000000, padav: false },
+      { q: 15, amount: 10000000, padav: true, title: "Grand Winner" }
+    ];
+
+    // ============================================================
+    // CELEBRATION CONFETTI BURST ENGINE
+    // ============================================================
+    function triggerCelebrationBurst(isMajor) {
+      if (typeof confetti === 'function') {
+        const festColors = ['#eda23d', '#f8cf8a', '#9a4632', '#8fe0ab', '#ffffff', '#ffd700'];
+        if (isMajor) {
+          // Grand Fireworks Barrage for Padav checkpoints / ₹1 Crore
+          const duration = 3.5 * 1000;
+          const end = Date.now() + duration;
+
+          (function frame() {
+            confetti({
+              particleCount: 8,
+              angle: 60,
+              spread: 65,
+              origin: { x: 0, y: 0.8 },
+              colors: festColors
+            });
+            confetti({
+              particleCount: 8,
+              angle: 120,
+              spread: 65,
+              origin: { x: 1, y: 0.8 },
+              colors: festColors
+            });
+            if (Date.now() < end) {
+              requestAnimationFrame(frame);
+            }
+          })();
+        } else {
+          // Standard Level Clear Celebration Burst
+          confetti({
+            particleCount: 80,
+            spread: 80,
+            origin: { y: 0.6 },
+            colors: festColors
+          });
+        }
+      } else {
+        // Fallback DOM Floating Marigold & Gold particles
+        createDOMConfetti(isMajor ? 40 : 20);
+      }
+    }
+
+    function createDOMConfetti(count) {
+      const colors = ['#eda23d', '#f8cf8a', '#9a4632', '#8fe0ab', '#ffd700'];
+      for (let i = 0; i < count; i++) {
+        const el = document.createElement('div');
+        el.className = 'dom-confetti-particle';
+        el.style.left = Math.random() * 100 + 'vw';
+        el.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        el.style.animationDuration = (1.5 + Math.random() * 2) + 's';
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 3500);
+      }
+    }
+
+    // ============================================================
+    // WEB AUDIO API SOUND SYNTHESIZER
+    // ============================================================
+    class SoundEngine {
+      constructor() {
+        this.ctx = null;
+      }
+      init() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (AudioContext) this.ctx = new AudioContext();
+        }
+      }
+      playTick() {
+        this.init();
+        if (!this.ctx) return;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.frequency.setValueAtTime(600, this.ctx.currentTime);
+        gain.gain.setValueAtTime(0.05, this.ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.08);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start();
+        osc.stop(this.ctx.currentTime + 0.08);
+      }
+      playLock() {
+        this.init();
+        if (!this.ctx) return;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(220, this.ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(440, this.ctx.currentTime + 0.3);
+        gain.gain.setValueAtTime(0.12, this.ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.35);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start();
+        osc.stop(this.ctx.currentTime + 0.35);
+      }
+      playCorrect() {
+        this.init();
+        if (!this.ctx) return;
+        const now = this.ctx.currentTime;
+        [523.25, 659.25, 783.99, 1046.50].forEach((freq, i) => {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.frequency.setValueAtTime(freq, now + (i * 0.08));
+          gain.gain.setValueAtTime(0.15, now + (i * 0.08));
+          gain.gain.exponentialRampToValueAtTime(0.001, now + (i * 0.08) + 0.3);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(now + (i * 0.08));
+          osc.stop(now + (i * 0.08) + 0.3);
+        });
+      }
+      playWinFanfare() {
+        this.init();
+        if (!this.ctx) return;
+        const now = this.ctx.currentTime;
+        const notes = [523.25, 659.25, 783.99, 1046.50, 1318.51, 1567.98];
+        notes.forEach((freq, i) => {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(freq, now + (i * 0.12));
+          gain.gain.setValueAtTime(0.2, now + (i * 0.12));
+          gain.gain.exponentialRampToValueAtTime(0.001, now + (i * 0.12) + 0.5);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(now + (i * 0.12));
+          osc.stop(now + (i * 0.12) + 0.5);
+        });
+      }
+      playWrong() {
+        this.init();
+        if (!this.ctx) return;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(160, this.ctx.currentTime);
+        osc.frequency.linearRampToValueAtTime(90, this.ctx.currentTime + 0.4);
+        gain.gain.setValueAtTime(0.2, this.ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.45);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start();
+        osc.stop(this.ctx.currentTime + 0.45);
+      }
+      playLifeline() {
+        this.init();
+        if (!this.ctx) return;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(880, this.ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(1760, this.ctx.currentTime + 0.25);
+        gain.gain.setValueAtTime(0.12, this.ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.25);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start();
+        osc.stop(this.ctx.currentTime + 0.25);
+      }
+    }
+    const audio = new SoundEngine();
+
+    // ============================================================
+    // PEERJS WEBRTC P2P LIVE SYNC ENGINE (Host PC <-> TV PC Sync)
+    // ============================================================
+    class SyncEngine {
+      constructor() {
+        this.peer = null;
+        this.connections = [];
+        this.roomId = 'teachers-day-quiz-2026';
+      }
+
+      initHost() {
+        if (typeof Peer === 'undefined') return;
+        try {
+          this.peer = new Peer(this.roomId);
+          this.peer.on('open', (id) => {
+            console.log('PeerJS Host Ready:', id);
+            this.updateBadge('🟢 P2P Host Live (' + id + ')');
+          });
+          this.peer.on('connection', (conn) => {
+            this.connections.push(conn);
+            this.updateBadge(`🟢 Connected (${this.connections.length} TV Screen)`);
+            conn.on('open', () => {
+              this.broadcastCurrentState();
+            });
+          });
+          this.peer.on('error', (err) => {
+            if (err.type === 'unavailable-id') {
+              console.log('Room ID taken, using fallback host peer...');
+              this.peer = new Peer();
+              this.peer.on('open', (id) => {
+                this.updateBadge('🟢 P2P Host Ready (' + id + ')');
+              });
+            }
+          });
+        } catch(e) {}
+      }
+
+      initTV(customRoomId) {
+        if (typeof Peer === 'undefined') return;
+        const targetRoom = customRoomId || this.roomId;
+        this.updateBadge('📡 Connecting to Host: ' + targetRoom + '...');
+        try {
+          if (this.peer) this.peer.destroy();
+          this.peer = new Peer();
+          this.peer.on('open', () => {
+            const conn = this.peer.connect(targetRoom);
+            conn.on('open', () => {
+              this.updateBadge('🟢 TV Synced with Host PC!');
+            });
+            conn.on('data', (data) => {
+              if (data && data.type === 'PUBLIC_GAME_STATE') {
+                renderTVFromData(data.payload);
+              }
+            });
+            conn.on('close', () => {
+              this.updateBadge('🔴 Host Disconnected. Retrying...');
+              setTimeout(() => this.initTV(targetRoom), 3000);
+            });
+          });
+        } catch(e) {}
+      }
+
+      broadcast(data) {
+        this.connections.forEach(conn => {
+          if (conn && conn.open) conn.send(data);
+        });
+      }
+
+      async broadcastCurrentState() {
+        const stateData = await callBackend('getPublicGameState');
+        this.broadcast({ type: 'PUBLIC_GAME_STATE', payload: stateData });
+      }
+
+      updateBadge(msg) {
+        const el = document.getElementById('tvSyncStatus');
+        if (el) el.innerText = msg;
+      }
+    }
+    const sync = new SyncEngine();
+
+    function connectTVToRoom() {
+      const code = document.getElementById('tvRoomCodeInput').value.trim() || 'teachers-day-quiz-2026';
+      sync.initTV(code);
+    }
+
+    // ============================================================
+    // DUAL ENGINE BACKEND BRIDGE
+    // ============================================================
+    const isGoogleAppsScript = typeof google !== 'undefined' && google.script && google.script.run;
+
+    const LocalMockEngine = {
+      defaultQuestions: [
+        { id: 'Q-1', question: 'What is the capital of India?', optionA: 'Mumbai', optionB: 'New Delhi', optionC: 'Kolkata', optionD: 'Chennai', correct: 'B', difficulty: 'Easy' },
+        { id: 'Q-2', question: 'Which planet is known as the Red Planet?', optionA: 'Venus', optionB: 'Mars', optionC: 'Jupiter', optionD: 'Saturn', correct: 'B', difficulty: 'Easy' },
+        { id: 'Q-3', question: 'What is the largest ocean on Earth?', optionA: 'Atlantic Ocean', optionB: 'Indian Ocean', optionC: 'Arctic Ocean', optionD: 'Pacific Ocean', correct: 'D', difficulty: 'Easy' },
+        { id: 'Q-4', question: 'How many days are there in a leap year?', optionA: '365', optionB: '366', optionC: '364', optionD: '360', correct: 'B', difficulty: 'Easy' },
+        { id: 'Q-5', question: 'Which festival is known as the festival of lights?', optionA: 'Holi', optionB: 'Eid', optionC: 'Diwali', optionD: 'Pongal', correct: 'C', difficulty: 'Easy' },
+
+        { id: 'Q-6', question: 'Who is known as the Father of Computers?', optionA: 'Alan Turing', optionB: 'Charles Babbage', optionC: 'Bill Gates', optionD: 'Steve Jobs', correct: 'B', difficulty: 'Medium' },
+        { id: 'Q-7', question: 'What is the chemical symbol for Gold?', optionA: 'Go', optionB: 'Gd', optionC: 'Au', optionD: 'Ag', correct: 'C', difficulty: 'Medium' },
+        { id: 'Q-8', question: 'Who painted the Mona Lisa?', optionA: 'Michelangelo', optionB: 'Leonardo da Vinci', optionC: 'Raphael', optionD: 'Donatello', correct: 'B', difficulty: 'Medium' },
+        { id: 'Q-9', question: 'Which gas is most abundant in Earth’s atmosphere?', optionA: 'Oxygen', optionB: 'Carbon Dioxide', optionC: 'Nitrogen', optionD: 'Hydrogen', correct: 'C', difficulty: 'Medium' },
+        { id: 'Q-10', question: 'Which Indian state is famous for the backwaters of Alappuzha?', optionA: 'Kerala', optionB: 'Goa', optionC: 'Odisha', optionD: 'Assam', correct: 'A', difficulty: 'Medium' },
+
+        { id: 'Q-11', question: 'Which country has the largest population in 2024?', optionA: 'India', optionB: 'China', optionC: 'USA', optionD: 'Indonesia', correct: 'A', difficulty: 'Hard' },
+        { id: 'Q-12', question: 'Which is the deepest ocean trench in the world?', optionA: 'Tonga Trench', optionB: 'Mariana Trench', optionC: 'Java Trench', optionD: 'Puerto Rico Trench', correct: 'B', difficulty: 'Hard' },
+        { id: 'Q-13', question: 'What is the SI unit of electric resistance?', optionA: 'Volt', optionB: 'Watt', optionC: 'Ohm', optionD: 'Ampere', correct: 'C', difficulty: 'Hard' },
+        { id: 'Q-14', question: 'Which ancient civilization developed cuneiform writing?', optionA: 'Roman', optionB: 'Sumerian', optionC: 'Mayan', optionD: 'Viking', correct: 'B', difficulty: 'Hard' },
+        { id: 'Q-15', question: 'Which constitutional article deals with the Right to Constitutional Remedies in India?', optionA: 'Article 14', optionB: 'Article 19', optionC: 'Article 21', optionD: 'Article 32', correct: 'D', difficulty: 'Hard' }
+      ],
+
+      getCustomQuestions() {
+        try {
+          return JSON.parse(localStorage.getItem('kbc_custom_questions') || '[]');
+        } catch(e) { return []; }
+      },
+
+      setCustomQuestions(qs) {
+        try {
+          localStorage.setItem('kbc_custom_questions', JSON.stringify(qs));
+        } catch(e) {}
+      },
+
+      getAllQuestionsPool() {
+        return [...this.defaultQuestions, ...this.getCustomQuestions()];
+      },
+
+      getAssignedMap() {
+        try {
+          return JSON.parse(localStorage.getItem('kbc_assigned_questions') || '{}');
+        } catch(e) { return {}; }
+      },
+
+      setAssignedMap(map) {
+        try {
+          localStorage.setItem('kbc_assigned_questions', JSON.stringify(map));
+        } catch(e) {}
+      },
+
+      getUsedQuestionIds() {
+        try {
+          return JSON.parse(localStorage.getItem('kbc_used_question_ids') || '[]');
+        } catch(e) { return []; }
+      },
+
+      setUsedQuestionIds(ids) {
+        try {
+          localStorage.setItem('kbc_used_question_ids', JSON.stringify(ids));
+        } catch(e) {}
+      },
+
+      getGameStates() {
+        try {
+          return JSON.parse(localStorage.getItem('kbc_game_states') || '{}');
+        } catch(e) {
+          return {};
+        }
+      },
+
+      setGameStates(states) {
+        try {
+          localStorage.setItem('kbc_game_states', JSON.stringify(states));
+        } catch(e) {}
+      },
+
+      getTVLockedPlayer() {
+        return localStorage.getItem('kbc_tv_locked_player') || '';
+      },
+
+      lockTVToPlayer(playerName) {
+        localStorage.setItem('kbc_tv_locked_player', playerName || '');
+        return { success: true };
+      },
+
+      unlockTV() {
+        localStorage.removeItem('kbc_tv_locked_player');
+        return { success: true };
+      },
+
+      claimNextQuestion(playerName, gameQuestionNumber) {
+        const diff = gameQuestionNumber <= 5 ? 'Easy' : (gameQuestionNumber <= 10 ? 'Medium' : 'Hard');
+        const key = `${String(playerName).trim().toLowerCase()}_Q${gameQuestionNumber}`;
+        const assignedMap = this.getAssignedMap();
+        const usedIds = this.getUsedQuestionIds();
+        const allPool = this.getAllQuestionsPool();
+
+        // If already assigned to this player for this level, return existing assigned question
+        if (assignedMap[key]) {
+          const existing = allPool.find(q => q.id === assignedMap[key]);
+          if (existing) {
+            return {
+              success: true,
+              gameQuestion: gameQuestionNumber,
+              difficulty: existing.difficulty,
+              id: existing.id,
+              question: existing.question,
+              options: [existing.optionA, existing.optionB, existing.optionC, existing.optionD],
+              correct: existing.correct
+            };
+          }
+        }
+
+        // Filter available questions matching difficulty that are NOT in usedIds!
+        const available = allPool.filter(q => q.difficulty === diff && !usedIds.includes(q.id));
+
+        if (!available.length) {
+          const totalInLevel = allPool.filter(q => q.difficulty === diff).length;
+          return {
+            success: false,
+            error: `❌ No unused ${diff} questions available in pool for Q${gameQuestionNumber}! (Total in pool: ${totalInLevel}). Please upload an Excel sheet with more ${diff} questions or reset question locks in Admin Panel.`
+          };
+        }
+
+        // Pick random unused question
+        const selected = available[Math.floor(Math.random() * available.length)];
+
+        // Lock question permanently across all contestants!
+        assignedMap[key] = selected.id;
+        this.setAssignedMap(assignedMap);
+
+        if (!usedIds.includes(selected.id)) {
+          usedIds.push(selected.id);
+          this.setUsedQuestionIds(usedIds);
+        }
+
+        return {
+          success: true,
+          gameQuestion: gameQuestionNumber,
+          difficulty: selected.difficulty,
+          id: selected.id,
+          question: selected.question,
+          options: [selected.optionA, selected.optionB, selected.optionC, selected.optionD],
+          correct: selected.correct
+        };
+      },
+
+      saveGameState(playerName, questionIndex, score, lifelinesUsed, status, extra) {
+        const states = this.getGameStates();
+        states[playerName] = {
+          playerName,
+          currentQuestion: questionIndex,
+          score,
+          lifelinesUsed,
+          status,
+          lastUpdated: new Date().toISOString(),
+          ...(extra || {})
+        };
+        this.setGameStates(states);
+        if (status === 'Playing') {
+          this.lockTVToPlayer(playerName);
+        }
+        return { success: true };
+      },
+
+      getGameState(playerName) {
+        const states = this.getGameStates();
+        return states[playerName] || { error: 'Player not found' };
+      },
+
+      swapCurrentQuestion(playerName, gameQuestionNumber) {
+        const diff = gameQuestionNumber <= 5 ? 'Easy' : (gameQuestionNumber <= 10 ? 'Medium' : 'Hard');
+        const key = `${String(playerName).trim().toLowerCase()}_Q${gameQuestionNumber}`;
+        const assignedMap = this.getAssignedMap();
+        const currentId = assignedMap[key];
+        const usedIds = this.getUsedQuestionIds();
+        const allPool = this.getAllQuestionsPool();
+
+        const available = allPool.filter(q => q.difficulty === diff && !usedIds.includes(q.id) && q.id !== currentId);
+        if (!available.length) {
+          return { success: false, error: `No unused ${diff} question is available for Q${gameQuestionNumber} to swap in.` };
+        }
+
+        const selected = available[Math.floor(Math.random() * available.length)];
+        assignedMap[key] = selected.id;
+        this.setAssignedMap(assignedMap);
+
+        if (!usedIds.includes(selected.id)) {
+          usedIds.push(selected.id);
+          this.setUsedQuestionIds(usedIds);
+        }
+
+        return {
+          success: true,
+          gameQuestion: gameQuestionNumber,
+          difficulty: selected.difficulty,
+          id: selected.id,
+          question: selected.question,
+          options: [selected.optionA, selected.optionB, selected.optionC, selected.optionD],
+          correct: selected.correct
+        };
+      },
+
+      getPublicGameState() {
+        const lockedPlayer = this.getTVLockedPlayer();
+        if (!lockedPlayer) {
+          return { active: false, message: 'Waiting for host to start...' };
+        }
+        const states = this.getGameStates();
+        const playerState = states[lockedPlayer];
+        if (!playerState) {
+          return { active: false, message: 'Waiting for player to start...' };
+        }
+
+        if (playerState.status !== 'Playing') {
+          if (playerState.status === 'Completed') {
+            return { active: false, message: `🎉 ${playerState.playerName} won ₹${(playerState.score || 0).toLocaleString('en-IN')}!` };
+          }
+          if (playerState.status === 'Lost') {
+            return { active: false, message: `Game Over — ${playerState.playerName} scored ₹${(playerState.score || 0).toLocaleString('en-IN')}` };
+          }
+          return { active: false, message: 'Waiting for next game...' };
+        }
+
+        const qData = this.claimNextQuestion(playerState.playerName, playerState.currentQuestion);
+        return {
+          active: true,
+          playerName: playerState.playerName,
+          currentQuestion: playerState.currentQuestion,
+          score: playerState.score,
+          question: qData.question,
+          options: qData.options,
+          difficulty: qData.difficulty,
+          answered: playerState.answered || false,
+          selectedOption: playerState.selectedOption || '',
+          correctOption: qData.correct
+        };
+      },
+
+      getLeaderboard() {
+        const states = this.getGameStates();
+        return Object.values(states).map(s => ({
+          name: s.playerName, score: s.score, status: s.status, securedAmount: s.securedAmount || 0
+        })).sort((a,b) => b.score - a.score);
+      },
+
+      verifyAdminPIN(pin) {
+        const stored = localStorage.getItem('kbc_admin_pin') || '1234';
+        return pin === stored ? { success: true } : { success: false, error: 'Invalid PIN' };
+      },
+
+      bulkAddQuestions(questionsArray) {
+        const currentCustom = this.getCustomQuestions();
+        const timestamp = Date.now();
+        const newFormatted = questionsArray.map((q, idx) => ({
+          id: `Q-${timestamp}-${idx + 1}`,
+          question: q.question,
+          optionA: q.optionA,
+          optionB: q.optionB,
+          optionC: q.optionC,
+          optionD: q.optionD,
+          correct: q.correct,
+          difficulty: q.difficulty
+        }));
+        this.setCustomQuestions([...currentCustom, ...newFormatted]);
+        return { success: true, count: newFormatted.length };
+      },
+
+      addQuestion(qData) {
+        return this.bulkAddQuestions([qData]);
+      },
+
+      deleteQuestion(id) {
+        const usedIds = this.getUsedQuestionIds();
+        if (usedIds.includes(id)) {
+          return { success: false, error: 'This question has already been allotted and locked. Reset question pool first.' };
+        }
+        const currentCustom = this.getCustomQuestions().filter(q => q.id !== id);
+        this.setCustomQuestions(currentCustom);
+        return { success: true };
+      },
+
+      getAllQuestions() {
+        const usedIds = this.getUsedQuestionIds();
+        return this.getAllQuestionsPool().map(q => ({
+          ...q,
+          used: usedIds.includes(q.id)
+        }));
+      },
+
+      resetQuestionPool() {
+        localStorage.removeItem('kbc_assigned_questions');
+        localStorage.removeItem('kbc_used_question_ids');
+        return { success: true, message: 'Question pool reset! All questions unlocked and available for a new event.' };
+      },
+
+      clearAllGameStates() {
+        localStorage.removeItem('kbc_game_states');
+        this.unlockTV();
+        return { success: true, message: 'All game states cleared.' };
+      }
+    };
+
+    function callBackend(funcName, ...args) {
+      return new Promise((resolve, reject) => {
+        if (isGoogleAppsScript) {
+          google.script.run
+            .withSuccessHandler(res => resolve(res))
+            .withFailureHandler(err => reject(err))[funcName](...args);
+        } else {
+          // Local mock fallback execution using localStorage
+          setTimeout(() => {
+            if (typeof LocalMockEngine[funcName] === 'function') {
+              resolve(LocalMockEngine[funcName](...args));
+            } else {
+              resolve({ success: true });
+            }
+          }, 100);
+        }
+      });
+    }
+
+    // ============================================================
+    // APPLICATION STATE
+    // ============================================================
+    let state = {
+      playerName: '',
+      currentQNum: 1,
+      score: 0,
+      securedAmount: 0,
+      currentQuestionData: null,
+      selectedOption: null,
+      answerUnlocked: false,
+      gameStartedForQuestion: false,
+      timerSeconds: 60,
+      timerInterval: null,
+      tvPollInterval: null,
+      adminAuthenticated: false,
+      adminPin: '1234',
+      lifelines: {
+        fiftyFifty: false,
+        audiencePoll: false,
+        askExpert: false,
+        questionSwap: false
+      }
+    };
+
+    // ============================================================
+    // INITIALIZATION & TAB SWITCHING
+    // ============================================================
+    document.addEventListener('DOMContentLoaded', () => {
+      renderPrizeLadder();
+      switchTab('gameView');
+      sync.initHost();
+    });
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+      const activeBtn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.getAttribute('onclick').includes(tabId));
+      if (activeBtn) activeBtn.classList.add('active');
+
+      document.getElementById(tabId).classList.add('active');
+
+      // Stop TV polling if switching away from TV tab
+      if (tabId !== 'tvView' && state.tvPollInterval) {
+        clearInterval(state.tvPollInterval);
+        state.tvPollInterval = null;
+      }
+
+      if (tabId === 'tvView') {
+        sync.initTV();
+        startTVPolling();
+      } else if (tabId === 'leaderboardView') {
+        loadLeaderboard();
+      }
+    }
+
+    // ============================================================
+    // PRIZE LADDER RENDERER
+    // ============================================================
+    function renderPrizeLadder() {
+      const container = document.getElementById('prizeLadder');
+      let html = `<div class="prize-title">🏆 Prize Ladder</div>`;
+      for (let i = PRIZES.length - 1; i >= 0; i--) {
+        const item = PRIZES[i];
+        const isCurrent = item.q === state.currentQNum;
+        const isAchieved = item.q < state.currentQNum;
+        const classes = `prize-step ${item.padav ? 'padav' : ''} ${isCurrent ? 'current' : ''} ${isAchieved ? 'achieved' : ''}`;
+        html += `
+          <div class="${classes}">
+            <span>${item.q}. ${item.padav ? '🚩' : ''} ₹${item.amount.toLocaleString('en-IN')}</span>
+            <span>${item.title || ''}</span>
+          </div>
+        `;
+      }
+      container.innerHTML = html;
+    }
+
+    // ============================================================
+    // GAME FLOW LOGIC
+    // ============================================================
+    async function startOrResumeGame() {
+      const inputEl = document.getElementById('playerNameInput');
+      const name = inputEl.value.trim() || state.playerName;
+      if (!name) {
+        alert('Please enter a contestant name!');
+        return;
+      }
+      state.playerName = name;
+      document.getElementById('displayPlayerName').innerText = name;
+
+      // Lock TV to active player automatically!
+      await callBackend('lockTVToPlayer', name);
+
+      // Check existing state or start fresh
+      try {
+        const res = await callBackend('getGameState', name);
+        if (res && !res.error && res.status === 'Playing') {
+          state.currentQNum = res.currentQuestion || 1;
+          state.score = res.score || 0;
+          state.securedAmount = res.securedAmount || 0;
+          state.lifelines.fiftyFifty = res.fiftyFiftyUsed;
+          state.lifelines.audiencePoll = res.audiencePollUsed;
+          state.lifelines.askExpert = res.askExpertUsed;
+          state.lifelines.questionSwap = res.questionSwapUsed;
+        } else {
+          state.currentQNum = 1;
+          state.score = 0;
+          state.securedAmount = 0;
+          state.lifelines = { fiftyFifty: false, audiencePoll: false, askExpert: false, questionSwap: false };
+        }
+      } catch(e) {}
+
+      document.getElementById('playerSelectSection').style.display = 'none';
+      document.getElementById('quizAreaSection').style.display = 'block';
+
+      updateLifelineButtons();
+      loadQuestion();
+    }
+
+    async function loadQuestion() {
+      resetOptionButtons();
+      renderPrizeLadder();
+
+      document.getElementById('currentQNum').innerText = state.currentQNum;
+      document.getElementById('currentScoreVal').innerText = state.score.toLocaleString('en-IN');
+      document.getElementById('questionText').innerText = 'Claiming next question from pool...';
+
+      try {
+        const res = await callBackend('claimNextQuestion', state.playerName, state.currentQNum);
+        if (res && res.success) {
+          state.currentQuestionData = res;
+          document.getElementById('difficultyTag').innerText = `${res.difficulty.toUpperCase()} LEVEL · Q${res.gameQuestion || state.currentQNum}`;
+          document.getElementById('questionText').innerText = res.question;
+
+          document.getElementById('optAText').innerText = res.options[0];
+          document.getElementById('optBText').innerText = res.options[1];
+          document.getElementById('optCText').innerText = res.options[2];
+          document.getElementById('optDText').innerText = res.options[3];
+
+          // Reset timer UI to 60s, but DO NOT start timer until Host clicks 🚀 Start / Resume Game!
+          stopTimer();
+          state.timerSeconds = 60;
+          updateTimerUI(60, 60);
+
+          // Disable option buttons until Host starts the question
+          ['A', 'B', 'C', 'D'].forEach(opt => {
+            const btn = document.getElementById(`opt${opt}`);
+            if (btn) btn.disabled = true;
+          });
+
+          // Highlight/Pulse the Start / Resume Game button to invite Host click
+          const startBtn = document.getElementById('startResumeHeaderBtn');
+          if (startBtn) startBtn.classList.add('btn-pulse');
+
+          saveState('Playing');
+        } else {
+          alert(res.error || 'Failed to claim question.');
+        }
+      } catch(err) {
+        alert('Error loading question: ' + err.message);
+      }
+    }
+
+    function selectOption(opt) {
+      if (!state.currentQuestionData || !state.gameStartedForQuestion || state.answerUnlocked) return;
+      audio.playLock();
+      state.selectedOption = opt;
+      document.querySelectorAll('.option-btn').forEach(btn => btn.classList.remove('selected'));
+      const chosenBtn = document.getElementById(`opt${opt}`);
+      if (chosenBtn) chosenBtn.classList.add('selected');
+      document.getElementById('lockAnswerBtn').disabled = false;
+      saveState('Playing', { selectedOption: opt, answered: false });
+    }
+
+    async function confirmAnswer() {
+      if (!state.selectedOption) return;
+      stopTimer();
+      audio.playLock();
+      document.getElementById('lockAnswerBtn').disabled = true;
+
+      // Lock option buttons so contestant cannot click after locking
+      ['A', 'B', 'C', 'D'].forEach(opt => {
+        const btn = document.getElementById(`opt${opt}`);
+        if (btn) btn.disabled = true;
+      });
+
+      const correct = state.currentQuestionData.correct;
+      const isCorrect = state.selectedOption === correct;
+
+      const chosenBtn = document.getElementById(`opt${state.selectedOption}`);
+      const correctBtn = document.getElementById(`opt${correct}`);
+
+      saveState('Playing', { selectedOption: state.selectedOption, correctOption: correct, answered: true });
+
+      if (isCorrect) {
+        state.answerUnlocked = true;
+        chosenBtn.classList.add('correct');
+
+        const currentPrizeObj = PRIZES.find(p => p.q === state.currentQNum);
+        state.score = currentPrizeObj ? currentPrizeObj.amount : state.score;
+
+        const isPadav = currentPrizeObj && currentPrizeObj.padav;
+        if (isPadav) {
+          state.securedAmount = currentPrizeObj.amount;
+        }
+
+        // TRIGGER CELEBRATION CONFETTI BURST!
+        if (isPadav || state.currentQNum === 15) {
+          audio.playWinFanfare();
+          triggerCelebrationBurst(true); // Huge Grand Fireworks Burst!
+        } else {
+          audio.playCorrect();
+          triggerCelebrationBurst(false); // Standard Celebration Burst!
+        }
+
+        if (state.currentQNum === 15) {
+          setTimeout(() => {
+            alert(`🎉 CONGRATULATIONS! ${state.playerName} HAS WON ₹1 CRORE!`);
+            saveState('Completed');
+            resetToPlayerSelect();
+          }, 2000);
+        } else {
+          // UNLOCK & ENABLE NEXT QUESTION BUTTON AFTER CORRECT ANSWER REVEAL!
+          const nextBtn = document.getElementById('nextQuestionBtn');
+          if (nextBtn) {
+            nextBtn.disabled = false;
+            nextBtn.classList.add('btn-pulse');
+          }
+          const nextQHeaderBtn = document.getElementById('nextQHeaderBtn');
+          if (nextQHeaderBtn) {
+            nextQHeaderBtn.disabled = false;
+            nextQHeaderBtn.classList.add('btn-pulse');
+          }
+        }
+      } else {
+        chosenBtn.classList.add('wrong');
+        if (correctBtn) correctBtn.classList.add('correct');
+        audio.playWrong();
+
+        setTimeout(() => {
+          alert(`❌ Incorrect! Game Over. Total Secured Money: ₹${state.securedAmount.toLocaleString('en-IN')}`);
+          state.score = state.securedAmount;
+          saveState('Lost');
+          resetToPlayerSelect();
+        }, 2200);
+      }
+    }
+
+    // Next Question Action (Triggers strictly ONLY when unlocked and Host clicks)
+    function nextQuestion() {
+      if (!state.answerUnlocked) {
+        alert('🔒 Next Question is LOCKED! Please select and lock the correct answer first.');
+        return;
+      }
+      if (state.currentQNum >= 15) {
+        alert('You are already at Question 15 (Grand Final Level - ₹1 Crore)!');
+        return;
+      }
+      stopTimer();
+      state.currentQNum++;
+      loadQuestion();
+    }
+
+    function resetOptionButtons() {
+      state.selectedOption = null;
+      state.answerUnlocked = false;
+      state.gameStartedForQuestion = false;
+
+      // Lock Lock Answer & Next Question buttons for the new question
+      document.getElementById('lockAnswerBtn').disabled = true;
+
+      const nextBtn = document.getElementById('nextQuestionBtn');
+      if (nextBtn) {
+        nextBtn.disabled = true;
+        nextBtn.classList.remove('btn-pulse');
+      }
+
+      const nextQHeaderBtn = document.getElementById('nextQHeaderBtn');
+      if (nextQHeaderBtn) {
+        nextQHeaderBtn.disabled = true;
+        nextQHeaderBtn.classList.remove('btn-pulse');
+      }
+
+      ['A', 'B', 'C', 'D'].forEach(opt => {
+        const btn = document.getElementById(`opt${opt}`);
+        if (btn) {
+          btn.className = 'option-btn';
+          btn.disabled = true; // Disabled until Host clicks 🚀 Start / Resume Game
+        }
+      });
+    }
+
+    // ============================================================
+    // TIMER LOGIC (Fixed 60s for EACH question)
+    // ============================================================
+    function startTimer() {
+      stopTimer();
+      state.timerSeconds = 60; // Fixed 60 seconds for every question
+      const total = 60;
+
+      updateTimerUI(state.timerSeconds, total);
+
+      state.timerInterval = setInterval(() => {
+        state.timerSeconds--;
+        audio.playTick();
+        updateTimerUI(state.timerSeconds, total);
+
+        if (state.timerSeconds <= 0) {
+          stopTimer();
+          audio.playWrong();
+          alert(`⏰ Time's Up! Total Secured Money: ₹${state.securedAmount.toLocaleString('en-IN')}`);
+          state.score = state.securedAmount;
+          saveState('Lost');
+          resetToPlayerSelect();
+        }
+      }, 1000);
+    }
+
+    function stopTimer() {
+      if (state.timerInterval) {
+        clearInterval(state.timerInterval);
+        state.timerInterval = null;
+      }
+    }
+
+    function updateTimerUI(sec, total) {
+      document.getElementById('timerClock').innerText = sec;
+      const pct = (sec / total) * 100;
+      document.getElementById('timerBar').style.width = pct + '%';
+    }
+
+    // ============================================================
+    // LIFELINES
+    // ============================================================
+    function updateLifelineButtons() {
+      document.getElementById('ll5050').disabled = state.lifelines.fiftyFifty;
+      document.getElementById('llPoll').disabled = state.lifelines.audiencePoll;
+      document.getElementById('llExpert').disabled = state.lifelines.askExpert;
+      document.getElementById('llSwap').disabled = state.lifelines.questionSwap;
+    }
+
+    function use5050() {
+      if (state.lifelines.fiftyFifty || !state.currentQuestionData) return;
+      audio.playLifeline();
+      state.lifelines.fiftyFifty = true;
+      updateLifelineButtons();
+
+      const correct = state.currentQuestionData.correct;
+      const wrongs = ['A', 'B', 'C', 'D'].filter(o => o !== correct);
+      wrongs.sort(() => 0.5 - Math.random());
+      const toRemove = wrongs.slice(0, 2);
+
+      toRemove.forEach(opt => {
+        const btn = document.getElementById(`opt${opt}`);
+        if (btn) btn.classList.add('disabled-5050');
+      });
+      saveState('Playing');
+    }
+
+    function useAudiencePoll() {
+      if (state.lifelines.audiencePoll || !state.currentQuestionData) return;
+      audio.playLifeline();
+      state.lifelines.audiencePoll = true;
+      updateLifelineButtons();
+
+      const correct = state.currentQuestionData.correct;
+      let pCorrect = 55 + Math.floor(Math.random() * 25);
+      let pRemaining = 100 - pCorrect;
+      let p1 = Math.floor(Math.random() * pRemaining);
+      let p2 = Math.floor(Math.random() * (pRemaining - p1));
+      let p3 = pRemaining - p1 - p2;
+
+      const opts = ['A', 'B', 'C', 'D'].filter(o => o !== correct);
+      const poll = {};
+      poll[correct] = pCorrect;
+      poll[opts[0]] = p1;
+      poll[opts[1]] = p2;
+      poll[opts[2]] = p3;
+
+      let html = '';
+      ['A', 'B', 'C', 'D'].forEach(opt => {
+        const pct = poll[opt] || 0;
+        html += `
+          <div class="poll-bar-group">
+            <div class="poll-label"><span>Option ${opt}</span><span>${pct}%</span></div>
+            <div class="poll-progress"><div class="poll-fill" style="width: ${pct}%"></div></div>
+          </div>
+        `;
+      });
+
+      document.getElementById('pollBarsContainer').innerHTML = html;
+      openModal('audiencePollModal');
+      saveState('Playing');
+    }
+
+    function useAskExpert() {
+      if (state.lifelines.askExpert || !state.currentQuestionData) return;
+      audio.playLifeline();
+      state.lifelines.askExpert = true;
+      updateLifelineButtons();
+
+      const correct = state.currentQuestionData.correct;
+      const advice = `Subject Specialist Teacher recommends: "Based on academic analysis, I am ${85 + Math.floor(Math.random()*12)}% confident the correct answer is Option ${correct}!"`;
+      document.getElementById('expertAdviceText').innerText = advice;
+      openModal('askExpertModal');
+      saveState('Playing');
+    }
+
+    async function useQuestionSwap() {
+      if (state.lifelines.questionSwap) return;
+      if (!confirm("Are you sure you want to swap this question?")) return;
+
+      audio.playLifeline();
+      state.lifelines.questionSwap = true;
+      updateLifelineButtons();
+
+      try {
+        const res = await callBackend('swapCurrentQuestion', state.playerName, state.currentQNum);
+        if (res && res.success) {
+          state.currentQuestionData = res;
+          resetOptionButtons();
+          document.getElementById('questionText').innerText = res.question;
+          document.getElementById('optAText').innerText = res.options[0];
+          document.getElementById('optBText').innerText = res.options[1];
+          document.getElementById('optCText').innerText = res.options[2];
+          document.getElementById('optDText').innerText = res.options[3];
+          startTimer();
+        } else {
+          alert(res.error || 'Failed to swap question.');
+        }
+      } catch(e) {
+        alert('Swap error: ' + e.message);
+      }
+    }
+
+    // ============================================================
+    // QUIT & SAVE STATE
+    // ============================================================
+    function quitAndTakeMoney() {
+      if (confirm(`Do you want to quit now and claim your winnings of ₹${state.score.toLocaleString('en-IN')}?`)) {
+        stopTimer();
+        state.securedAmount = state.score;
+        saveState('Completed');
+        triggerCelebrationBurst(true);
+        alert(`🏆 You have chosen to quit! Final Winnings: ₹${state.score.toLocaleString('en-IN')}`);
+        resetToPlayerSelect();
+      }
+    }
+
+    function saveState(status, extraDetails) {
+      if (!state.playerName) return;
+      const extra = {
+        firstPadavReached: state.currentQNum > 5,
+        secondPadavReached: state.currentQNum > 10,
+        securedAmount: state.securedAmount,
+        fiftyFiftyUsed: state.lifelines.fiftyFifty,
+        audiencePollUsed: state.lifelines.audiencePoll,
+        askExpertUsed: state.lifelines.askExpert,
+        questionSwapUsed: state.lifelines.questionSwap,
+        ...(extraDetails || {})
+      };
+      callBackend('saveGameState', state.playerName, state.currentQNum, state.score, 0, status, extra).then(() => {
+        sync.broadcastCurrentState();
+      });
+    }
+
+    function resetToPlayerSelect() {
+      stopTimer();
+      document.getElementById('quizAreaSection').style.display = 'none';
+      document.getElementById('playerSelectSection').style.display = 'block';
+    }
+
+    function restartOrNewGame() {
+      if (state.playerName && state.currentQNum > 1) {
+        if (!confirm(`Are you sure you want to start a new game or change the contestant from "${state.playerName}"?`)) {
+          return;
+        }
+      }
+      resetToPlayerSelect();
+      const input = document.getElementById('playerNameInput');
+      if (input) {
+        input.value = '';
+        input.focus();
+      }
+    }
+
+    function startOrResumeHeaderGame() {
+      const startBtn = document.getElementById('startResumeHeaderBtn');
+
+      // If timer is not running yet for current question, START THE TIMER & GAME FOR THIS QUESTION!
+      if (!state.gameStartedForQuestion && state.currentQuestionData && !state.answerUnlocked) {
+        state.gameStartedForQuestion = true;
+
+        // Enable options for contestant to answer
+        ['A', 'B', 'C', 'D'].forEach(opt => {
+          const btn = document.getElementById(`opt${opt}`);
+          if (btn) btn.disabled = false;
+        });
+
+        if (startBtn) startBtn.classList.remove('btn-pulse');
+
+        // NOW start the 60-second timer countdown!
+        startTimer();
+        return;
+      }
+
+      // If game/timer is already active or question answered, prompt to start a new game / change contestant
+      restartOrNewGame();
+    }
+
+    // ============================================================
+    // TV SCREEN SYNC
+    // ============================================================
+    async function pushCurrentToTV() {
+      const inputVal = document.getElementById('playerNameInput').value.trim();
+      const name = inputVal || state.playerName;
+      if (!name) return alert('Enter a player name first!');
+      state.playerName = name;
+      await callBackend('lockTVToPlayer', name);
+      sync.broadcastCurrentState();
+      alert(`📺 TV Broadcast locked & synced for: ${name}`);
+    }
+
+    function startTVPolling() {
+      pollTVState();
+      state.tvPollInterval = setInterval(pollTVState, 1500);
+    }
+
+    async function pollTVState() {
+      try {
+        const res = await callBackend('getPublicGameState');
+        renderTVFromData(res);
+      } catch(e) {}
+    }
+
+    function renderTVPrizeLadder(currentQNum) {
+      const container = document.getElementById('tvPrizeLadder');
+      if (!container) return;
+      const qNum = Number(currentQNum || 1);
+      let html = `<div class="prize-title">🏆 Prize Ladder</div>`;
+      for (let i = PRIZES.length - 1; i >= 0; i--) {
+        const item = PRIZES[i];
+        const isCurrent = item.q === qNum;
+        const isAchieved = item.q < qNum;
+        const classes = `prize-step ${item.padav ? 'padav' : ''} ${isCurrent ? 'current' : ''} ${isAchieved ? 'achieved' : ''}`;
+        html += `
+          <div class="${classes}">
+            <span>${item.q}. ${item.padav ? '🚩' : ''} ₹${item.amount.toLocaleString('en-IN')}</span>
+            <span>${item.title || ''}</span>
+          </div>
+        `;
+      }
+      container.innerHTML = html;
+    }
+
+    function renderTVFromData(res) {
+      const banner = document.getElementById('tvStatusBanner');
+      const content = document.getElementById('tvActiveContent');
+
+      if (!res || !res.active) {
+        banner.innerText = res ? res.message : 'WAITING FOR HOST TO START GAME';
+        content.style.display = 'none';
+      } else {
+        banner.innerText = `LIVE BROADCAST · Q${res.currentQuestion} OF 15`;
+        content.style.display = 'block';
+
+        document.getElementById('tvPlayerName').innerText = res.playerName;
+        document.getElementById('tvQNum').innerText = res.currentQuestion;
+        document.getElementById('tvScore').innerText = (res.score || 0).toLocaleString('en-IN');
+        document.getElementById('tvQuestionText').innerText = res.question;
+
+        document.getElementById('tvOptAText').innerText = res.options[0];
+        document.getElementById('tvOptBText').innerText = res.options[1];
+        document.getElementById('tvOptCText').innerText = res.options[2];
+        document.getElementById('tvOptDText').innerText = res.options[3];
+
+        renderTVPrizeLadder(res.currentQuestion);
+
+        ['A', 'B', 'C', 'D'].forEach(opt => {
+          const el = document.getElementById(`tvOpt${opt}`);
+          el.className = 'tv-option';
+          if (res.selectedOption === opt) {
+            el.classList.add('selected');
+          }
+          if (res.answered && opt === res.correctOption) {
+            el.classList.add('correct');
+            if (!el.dataset.burstDone) {
+              el.dataset.burstDone = 'true';
+              triggerCelebrationBurst(res.currentQuestion === 5 || res.currentQuestion === 10 || res.currentQuestion === 15);
+            }
+          } else {
+            delete el.dataset.burstDone;
+          }
+        });
+      }
+    }
+
+    // Listen for localStorage changes across browser tabs on same PC
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'kbc_tv_locked_player' || e.key === 'kbc_game_states') {
+        const tvTabActive = document.getElementById('tvView').classList.contains('active');
+        if (tvTabActive) pollTVState();
+      }
+    });
+
+    // ============================================================
+    // LEADERBOARD
+    // ============================================================
+    async function loadLeaderboard() {
+      const tbody = document.getElementById('leaderboardBody');
+      tbody.innerHTML = '<tr><td colspan="4">Loading Hall of Fame...</td></tr>';
+      try {
+        const list = await callBackend('getLeaderboard');
+        if (!list || !list.length) {
+          tbody.innerHTML = '<tr><td colspan="4">No completed games yet.</td></tr>';
+          return;
+        }
+
+        let html = '';
+        list.forEach((p, idx) => {
+          html += `
+            <tr>
+              <td><strong>#${idx + 1}</strong></td>
+              <td>${p.name}</td>
+              <td><span style="color: ${p.status === 'Completed' ? 'var(--ok)' : 'var(--bad)'}">${p.status}</span></td>
+              <td><strong>₹${(p.score || p.securedAmount || 0).toLocaleString('en-IN')}</strong></td>
+            </tr>
+          `;
+        });
+        tbody.innerHTML = html;
+      } catch(e) {
+        tbody.innerHTML = '<tr><td colspan="4">Failed to load leaderboard.</td></tr>';
+      }
+    }
+
+    // ============================================================
+    // ADMIN PANEL & EXCEL BULK IMPORTER
+    // ============================================================
+    let parsedExcelQuestions = [];
+
+    function handleExcelFileSelect(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      document.getElementById('excelFileNameDisplay').innerText = `📄 ${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
+      
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const data = new Uint8Array(e.target.result);
+          if (typeof XLSX === 'undefined') {
+            alert('XLSX library is loading, please try again in 2 seconds.');
+            return;
+          }
+          const workbook = XLSX.read(data, { type: 'array' });
+          const firstSheetName = workbook.SheetNames[0];
+          const worksheet = workbook.Sheets[firstSheetName];
+          const jsonRows = XLSX.utils.sheet_to_json(worksheet, { defval: '' });
+
+          parsedExcelQuestions = [];
+          let easyCount = 0, mediumCount = 0, hardCount = 0, invalidCount = 0;
+
+          jsonRows.forEach((row) => {
+            const qText = String(row['Question'] || row['question'] || row['Question Text'] || '').trim();
+            const optA = String(row['Option A'] || row['OptionA'] || row['optionA'] || row['A'] || '').trim();
+            const optB = String(row['Option B'] || row['OptionB'] || row['optionB'] || row['B'] || '').trim();
+            const optC = String(row['Option C'] || row['OptionC'] || row['optionC'] || row['C'] || '').trim();
+            const optD = String(row['Option D'] || row['OptionD'] || row['optionD'] || row['D'] || '').trim();
+            let correct = String(row['Correct Answer'] || row['Correct'] || row['correct'] || row['Answer'] || '').trim().toUpperCase();
+            let difficulty = String(row['Difficulty'] || row['difficulty'] || row['Level'] || 'Medium').trim();
+
+            const diffLower = difficulty.toLowerCase();
+            if (diffLower === 'easy' || diffLower === '1') difficulty = 'Easy';
+            else if (diffLower === 'hard' || diffLower === '3') difficulty = 'Hard';
+            else difficulty = 'Medium';
+
+            if (qText && optA && optB && optC && optD && ['A', 'B', 'C', 'D'].includes(correct)) {
+              parsedExcelQuestions.push({
+                question: qText,
+                optionA: optA,
+                optionB: optB,
+                optionC: optC,
+                optionD: optD,
+                correct: correct,
+                difficulty: difficulty
+              });
+
+              if (difficulty === 'Easy') easyCount++;
+              else if (difficulty === 'Medium') mediumCount++;
+              else if (difficulty === 'Hard') hardCount++;
+            } else if (qText || optA) {
+              invalidCount++;
+            }
+          });
+
+          const previewBox = document.getElementById('excelPreviewBox');
+          const summaryEl = document.getElementById('excelPreviewSummary');
+          const detailsEl = document.getElementById('excelPreviewDetails');
+          previewBox.style.display = 'block';
+
+          if (parsedExcelQuestions.length > 0) {
+            summaryEl.innerText = `✅ Found ${parsedExcelQuestions.length} Valid Questions in Sheet!`;
+            detailsEl.innerHTML = `
+              📊 Difficulty Breakdown: <strong>${easyCount} Easy</strong>, <strong>${mediumCount} Medium</strong>, <strong>${hardCount} Hard</strong>.
+              ${invalidCount > 0 ? `<br/><span style="color: var(--bad);">⚠️ ${invalidCount} rows skipped due to missing options or invalid correct answer (must be A, B, C, or D).</span>` : ''}
+            `;
+            document.getElementById('uploadExcelBtn').disabled = false;
+          } else {
+            summaryEl.innerText = `❌ No valid questions found in file!`;
+            detailsEl.innerText = `Please make sure columns are named: Question, Option A, Option B, Option C, Option D, Correct Answer, Difficulty.`;
+            document.getElementById('uploadExcelBtn').disabled = true;
+          }
+        } catch(err) {
+          alert('Error reading Excel file: ' + err.message);
+        }
+      };
+      reader.readAsArrayBuffer(file);
+    }
+
+    async function processAndUploadExcel() {
+      if (!parsedExcelQuestions.length) return;
+      const btn = document.getElementById('uploadExcelBtn');
+      btn.disabled = true;
+      btn.innerText = '⏳ Uploading to Pool...';
+
+      try {
+        const res = await callBackend('bulkAddQuestions', parsedExcelQuestions, state.adminPin);
+        if (res && res.success) {
+          alert(`🎉 Success! ${parsedExcelQuestions.length} questions imported into the pool bank!`);
+          parsedExcelQuestions = [];
+          document.getElementById('excelFileInput').value = '';
+          document.getElementById('excelFileNameDisplay').innerText = 'No file selected';
+          document.getElementById('excelPreviewBox').style.display = 'none';
+          btn.innerText = '📤 Import & Save Questions';
+          loadAdminQuestions();
+        } else {
+          alert(res.error || 'Failed to bulk upload questions.');
+          btn.disabled = false;
+          btn.innerText = '📤 Import & Save Questions';
+        }
+      } catch(e) {
+        alert('Upload error: ' + e.message);
+        btn.disabled = false;
+        btn.innerText = '📤 Import & Save Questions';
+      }
+    }
+
+    function downloadSampleExcelTemplate() {
+      const sampleData = [
+        {
+          "Question": "What is the capital of India?",
+          "Option A": "Mumbai",
+          "Option B": "New Delhi",
+          "Option C": "Kolkata",
+          "Option D": "Chennai",
+          "Correct Answer": "B",
+          "Difficulty": "Easy"
+        },
+        {
+          "Question": "Which chemical element has the symbol Au?",
+          "Option A": "Silver",
+          "Option B": "Copper",
+          "Option C": "Gold",
+          "Option D": "Iron",
+          "Correct Answer": "C",
+          "Difficulty": "Medium"
+        },
+        {
+          "Question": "Which constitutional article deals with Right to Equality in India?",
+          "Option A": "Article 14",
+          "Option B": "Article 19",
+          "Option C": "Article 21",
+          "Option D": "Article 32",
+          "Correct Answer": "A",
+          "Difficulty": "Hard"
+        }
+      ];
+
+      if (typeof XLSX !== 'undefined') {
+        const ws = XLSX.utils.json_to_sheet(sampleData);
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "Questions_Template");
+        XLSX.writeFile(wb, "Teachers_Day_Quiz_Template.xlsx");
+      } else {
+        let csv = "Question,Option A,Option B,Option C,Option D,Correct Answer,Difficulty\n";
+        sampleData.forEach(r => {
+          csv += `"${r["Question"]}","${r["Option A"]}","${r["Option B"]}","${r["Option C"]}","${r["Option D"]}","${r["Correct Answer"]}","${r["Difficulty"]}"\n`;
+        });
+        const blob = new Blob([csv], { type: 'text/csv' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = "Teachers_Day_Quiz_Template.csv";
+        link.click();
+      }
+    }
+
+    async function authenticateAdmin() {
+      const pin = document.getElementById('adminPinInput').value;
+      const res = await callBackend('verifyAdminPIN', pin);
+      if (res && res.success) {
+        state.adminAuthenticated = true;
+        state.adminPin = pin;
+        document.getElementById('adminAuthSection').style.display = 'none';
+        document.getElementById('adminPanelSection').style.display = 'block';
+        loadAdminQuestions();
+      } else {
+        alert('Invalid Admin PIN!');
+      }
+    }
+
+    async function submitAddQuestion() {
+      const qText = document.getElementById('addQText').value.trim();
+      const a = document.getElementById('addOptA').value.trim();
+      const b = document.getElementById('addOptB').value.trim();
+      const c = document.getElementById('addOptC').value.trim();
+      const d = document.getElementById('addOptD').value.trim();
+      const correct = document.getElementById('addCorrectOpt').value;
+      const difficulty = document.getElementById('addDifficulty').value;
+
+      if (!qText || !a || !b || !c || !d) return alert('Please fill in all question fields!');
+
+      const res = await callBackend('addQuestion', {
+        question: qText, optionA: a, optionB: b, optionC: c, optionD: d, correct, difficulty
+      }, state.adminPin);
+
+      if (res && res.success) {
+        alert('Question added successfully!');
+        document.getElementById('addQText').value = '';
+        loadAdminQuestions();
+      } else {
+        alert(res.error || 'Failed to add question.');
+      }
+    }
+
+    async function loadAdminQuestions() {
+      const tbody = document.getElementById('questionTableBody');
+      tbody.innerHTML = '<tr><td colspan="6">Loading pool bank...</td></tr>';
+
+      try {
+        const questions = await callBackend('getAllQuestions');
+        if (!questions || !questions.length) {
+          tbody.innerHTML = '<tr><td colspan="6">No questions found in pool.</td></tr>';
+          return;
+        }
+        let html = '';
+        questions.forEach(q => {
+          html += `
+            <tr>
+              <td><small>${q.id}</small></td>
+              <td>${q.question}</td>
+              <td><span class="mode-badge" style="padding: 2px 10px; font-size: 0.75rem;">${q.difficulty}</span></td>
+              <td><strong>Option ${q.correct}</strong></td>
+              <td>${q.used ? '<span style="color:var(--bad)">Locked</span>' : '<span style="color:var(--ok)">Available</span>'}</td>
+              <td>
+                <button class="btn btn-danger btn-sm" onclick="adminDeleteQ('${q.id}')" ${q.used ? 'disabled' : ''}>Delete</button>
+              </td>
+            </tr>
+          `;
+        });
+        tbody.innerHTML = html;
+      } catch(e) {
+        tbody.innerHTML = '<tr><td colspan="6">Error loading questions.</td></tr>';
+      }
+    }
+
+    async function adminDeleteQ(id) {
+      if (!confirm("Are you sure you want to delete this question?")) return;
+      const res = await callBackend('deleteQuestion', id, state.adminPin);
+      if (res && res.success) {
+        alert('Question deleted.');
+        loadAdminQuestions();
+      } else {
+        alert(res.error || 'Cannot delete question.');
+      }
+    }
+
+    async function adminResetPool() {
+      if (!confirm("Reset all question assignment locks? This makes previously shown questions available for a new event.")) return;
+      const res = await callBackend('resetQuestionPool', state.adminPin);
+      alert(res.message || res.error);
+      loadAdminQuestions();
+    }
+
+    async function adminClearGameStates() {
+      if (!confirm("Clear all contestant game states and leaderboard?")) return;
+      const res = await callBackend('clearAllGameStates', state.adminPin);
+      alert(res.message || res.error);
+      loadAdminQuestions();
+    }
+
+    // Modal Helpers
+    function openModal(id) {
+      document.getElementById(id).classList.add('active');
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('active');
+    }
+  </script>
+</body>
+</html>
