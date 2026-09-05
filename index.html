@@ -1242,7 +1242,6 @@
 
         <!-- Host Action Toolbar -->
         <div class="host-toolbar">
-          <button class="btn btn-primary btn-md btn-pulse" id="startResumeHeaderBtn" onclick="startOrResumeHeaderGame()" title="Start / Resume Game">🚀 Start / Resume Game</button>
           <button class="btn btn-secondary btn-md" id="nextQHeaderBtn" onclick="nextQuestion()" disabled>⏭️ Next Q</button>
           <button class="btn btn-secondary btn-md" onclick="triggerCelebrationBurst(true)" title="Trigger Celebration Burst">🎉 Celebration</button>
           <button class="btn btn-secondary btn-md" onclick="pushCurrentToTV()">📺 Push to TV</button>
@@ -2362,8 +2361,7 @@
             }
           });
 
-          const startBtn = document.getElementById('startResumeHeaderBtn');
-          if (startBtn) startBtn.classList.remove('btn-pulse');
+          
 
           // Automatically start 60-second timer countdown!
           startTimer();
