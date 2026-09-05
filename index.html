@@ -766,31 +766,201 @@
       border-color: #e74c3c !important;
     }
 
-    /* ---- ADMIN PANEL & TABLES ---- */
-    .admin-card {
-      background: rgba(14, 29, 59, 0.95);
-      border: 1.5px solid var(--glass-border-strong);
-      border-radius: var(--r-lg);
-      padding: 38px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+    /* ---- ADMIN PANEL / CONTROL CENTRE ---- */
+    #adminView {
+      padding-top: 8px;
     }
 
-    .admin-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 18px;
-      text-align: left;
+    #adminView .player-select {
+      max-width: 520px;
+      margin: 42px auto;
+      padding: 42px;
+      text-align: center;
+      background: linear-gradient(145deg, rgba(18, 37, 72, 0.98), rgba(10, 24, 50, 0.98));
+      border: 1px solid rgba(255, 215, 0, 0.28);
+      border-radius: 24px;
+      box-shadow: 0 24px 70px rgba(0,0,0,.55);
     }
 
-    .admin-table th, .admin-table td {
-      padding: 14px 18px;
-      border-bottom: 1px solid var(--glass-border);
+    #adminView .player-select h2 {
+      margin-bottom: 8px;
+      font-size: 2rem;
     }
 
-    .admin-table th {
-      color: var(--gold-hi);
+    #adminView .player-select input {
+      max-width: 320px;
+      margin: 18px auto;
+      text-align: center;
+      letter-spacing: .28em;
+      font-size: 1.2rem;
+    }
+
+    #adminPanelSection {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(300px, .65fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    #adminPanelSection .admin-card {
+      position: relative;
+      background: linear-gradient(145deg, rgba(15, 32, 65, .98), rgba(9, 22, 46, .98));
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 20px;
+      padding: 26px;
+      box-shadow: 0 16px 42px rgba(0,0,0,.36);
+      overflow: hidden;
+    }
+
+    #adminPanelSection .admin-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #ffd700, #e59424, transparent);
+      opacity: .9;
+    }
+
+    #adminPanelSection .admin-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.18rem;
+      color: #fff;
+    }
+
+    #adminPanelSection .admin-card > p {
+      margin-top: 0;
+    }
+
+    #adminPanelSection .admin-card:nth-child(1),
+    #adminPanelSection .admin-card:nth-child(2),
+    #adminPanelSection .admin-card:nth-child(4) {
+      grid-column: 1 / -1;
+    }
+
+    #adminPanelSection .admin-card:nth-child(3) {
+      grid-column: 1 / -1;
+    }
+
+    #adminPanelSection .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    #adminPanelSection .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    #adminPanelSection .form-group label {
+      display: block;
+      margin-bottom: 7px;
+      color: #dce7ff;
+      font-size: .82rem;
       font-weight: 700;
-      font-size: 0.92rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    #adminPanelSection .form-group input,
+    #adminPanelSection .form-group select {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .admin-upload-zone {
+      margin: 18px 0;
+      padding: 30px 20px;
+      text-align: center;
+      border: 2px dashed rgba(255,215,0,.35);
+      border-radius: 16px;
+      background: rgba(255,255,255,.035);
+      transition: .2s ease;
+    }
+
+    .admin-upload-zone:hover {
+      border-color: rgba(255,215,0,.65);
+      background: rgba(255,215,0,.045);
+    }
+
+    .admin-upload-icon {
+      font-size: 2.1rem;
+      margin-bottom: 8px;
+    }
+
+    .admin-action-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .admin-action-grid .btn {
+      width: 100%;
+    }
+
+    .admin-security-note {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-top: 16px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: rgba(255,215,0,.06);
+      border: 1px solid rgba(255,215,0,.14);
+      color: var(--chalk-dim);
+      font-size: .82rem;
+      line-height: 1.5;
+    }
+
+    #adminPanelSection .table-wrap {
+      margin-top: 18px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px;
+      overflow: auto;
+      background: rgba(0,0,0,.12);
+    }
+
+    #adminPanelSection table {
+      min-width: 760px;
+    }
+
+    #adminPanelSection th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: #10284d;
+      color: #ffd700;
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    #adminPanelSection td {
+      vertical-align: middle;
+    }
+
+    @media (max-width: 900px) {
+      #adminPanelSection {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      #adminView .player-select {
+        margin: 20px auto;
+        padding: 28px 20px;
+      }
+      #adminPanelSection .admin-card {
+        padding: 20px;
+      }
+      #adminPanelSection .form-grid,
+      .admin-action-grid {
+        grid-template-columns: 1fr;
+      }
+      #adminPanelSection .form-group.full {
+        grid-column: auto;
+      }
     }
 
     /* ---- MODALS & CHEQUE ---- */
@@ -1258,42 +1428,50 @@
     <!-- TAB 4: ADMIN PANEL VIEW -->
     <div id="adminView" class="tab-content">
       <div id="adminAuthSection" class="player-select">
-        <h2>Admin Authentication</h2>
-        <p>Enter 4-digit Admin PIN (Default: 1234)</p>
-        <input type="password" id="adminPinInput" placeholder="Enter PIN" maxlength="10" />
-        <div class="btn-group">
-          <button class="btn" onclick="authenticateAdmin()">Unlock Admin Panel</button>
+        <div style="font-size:3rem; margin-bottom:8px;">🔐</div>
+        <h2>Admin Control Centre</h2>
+        <p>Secure access to the question bank and game controls.</p>
+        <input type="password" id="adminPinInput" placeholder="Enter Admin PIN" maxlength="10" inputmode="numeric" autocomplete="off" />
+        <div class="btn-group" style="justify-content:center;">
+          <button class="btn" onclick="authenticateAdmin()">🔓 Unlock Control Centre</button>
+        </div>
+        <div class="admin-security-note" style="text-align:left;">
+          <span>🛡️</span><span>Only authorised staff should access this area. Question locks and game-state controls can affect the live quiz.</span>
         </div>
       </div>
 
       <div id="adminPanelSection" style="display: none;">
         <!-- Excel / CSV Bulk Upload Form -->
         <div class="admin-card">
-          <h3>📊 Upload Questions from Excel / CSV Sheet</h3>
-          <p style="color: var(--chalk-dim); font-size: 0.88rem; margin-bottom: 16px; line-height: 1.5;">
-            Upload an Excel workbook (<code style="color: var(--marigold-hi)">.xlsx</code>, <code style="color: var(--marigold-hi)">.xls</code>) or <code style="color: var(--marigold-hi)">.csv</code> file. Once questions are allotted to a contestant, they are automatically <strong>locked</strong> and will never appear for another contestant!
+          <h3>📥 Question Bank Import</h3>
+          <p style="color: var(--chalk-dim); font-size: 0.88rem; line-height: 1.5;">
+            Add multiple questions at once using <strong>.xlsx</strong>, <strong>.xls</strong> or <strong>.csv</strong>. All imported questions are added to the pool and can later be locked automatically when allotted.
           </p>
 
-          <div style="background: rgba(0, 0, 0, 0.25); border: 2px dashed var(--glass-border-strong); border-radius: var(--r-md); padding: 22px; text-align: center; margin-bottom: 16px;">
+          <div class="admin-upload-zone">
+            <div class="admin-upload-icon">📊</div>
+            <strong>Import an Excel / CSV question sheet</strong>
+            <div style="color:var(--chalk-dim); font-size:.82rem; margin:7px 0 16px;">Select a prepared question-bank file to preview it before saving.</div>
             <input type="file" id="excelFileInput" accept=".xlsx, .xls, .csv" style="display: none;" onchange="handleExcelFileSelect(event)" />
-            <button class="btn btn-secondary" onclick="document.getElementById('excelFileInput').click()">📁 Choose Excel / CSV File</button>
-            <div id="excelFileNameDisplay" style="margin-top: 10px; font-weight: 600; color: var(--marigold-hi); font-size: 0.9rem;">No file selected</div>
+            <button class="btn btn-secondary" onclick="document.getElementById('excelFileInput').click()">📁 Choose File</button>
+            <div id="excelFileNameDisplay" style="margin-top:12px; font-weight:600; color:var(--marigold-hi); font-size:.9rem;">No file selected</div>
           </div>
 
-          <div id="excelPreviewBox" style="display: none; background: rgba(0,0,0,0.35); border: 1px solid var(--glass-border); border-radius: var(--r-sm); padding: 14px 18px; margin-bottom: 16px; font-size: 0.88rem;">
-            <div style="font-weight: 700; color: var(--marigold-hi); margin-bottom: 6px;" id="excelPreviewSummary">Previewing Excel Data...</div>
-            <div style="color: var(--chalk-dim);" id="excelPreviewDetails"></div>
+          <div id="excelPreviewBox" style="display: none; background: rgba(0,0,0,0.25); border: 1px solid var(--glass-border); border-radius: 14px; padding: 15px 18px; margin-bottom: 16px; font-size: 0.88rem;">
+            <div style="font-weight:700; color:var(--marigold-hi); margin-bottom:6px;" id="excelPreviewSummary">Previewing Excel Data...</div>
+            <div style="color:var(--chalk-dim);" id="excelPreviewDetails"></div>
           </div>
 
-          <div class="btn-group" style="justify-content: flex-start;">
+          <div class="admin-action-grid">
             <button class="btn" id="uploadExcelBtn" onclick="processAndUploadExcel()" disabled>📤 Import & Save Questions</button>
-            <button class="btn btn-secondary" onclick="downloadSampleExcelTemplate()">📥 Download Sample Excel Template</button>
+            <button class="btn btn-secondary" onclick="downloadSampleExcelTemplate()">📥 Download Sample Template</button>
           </div>
         </div>
 
         <!-- Single Question Add Form -->
         <div class="admin-card">
-          <h3>➕ Add New Question to Pool</h3>
+          <h3>➕ Create Single Question</h3>
+          <p style="color:var(--chalk-dim); font-size:.86rem;">Add one question directly to the pool with its answer and difficulty level.</p>
           <div class="form-grid">
             <div class="form-group full">
               <label>Question Text</label>
@@ -1316,38 +1494,43 @@
               <input type="text" id="addOptD" placeholder="Option D" />
             </div>
             <div class="form-group">
-              <label>Correct Option (A, B, C, or D)</label>
+              <label>Correct Option</label>
               <select id="addCorrectOpt">
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-                <option value="D">D</option>
+                <option value="A">A — Option A</option>
+                <option value="B">B — Option B</option>
+                <option value="C">C — Option C</option>
+                <option value="D">D — Option D</option>
               </select>
             </div>
             <div class="form-group">
               <label>Difficulty Pool</label>
               <select id="addDifficulty">
-                <option value="Easy">Easy (Q1 - Q5)</option>
-                <option value="Medium">Medium (Q6 - Q10)</option>
-                <option value="Hard">Hard (Q11 - Q15)</option>
+                <option value="Easy">Easy — Q1 to Q5</option>
+                <option value="Medium">Medium — Q6 to Q10</option>
+                <option value="Hard">Hard — Q11 to Q15</option>
               </select>
             </div>
           </div>
-          <button class="btn" onclick="submitAddQuestion()">Save Question</button>
+          <button class="btn" onclick="submitAddQuestion()">💾 Save Question to Pool</button>
         </div>
 
         <!-- System Controls & Pool Reset -->
         <div class="admin-card">
-          <h3>⚡ System Controls & Pool Management</h3>
-          <div class="btn-group" style="justify-content: flex-start;">
+          <h3>⚙️ Live Game & Pool Controls</h3>
+          <p style="color:var(--chalk-dim); font-size:.86rem;">Use these controls only when you intentionally want to reset the question-allocation state or clear saved contestant game states.</p>
+          <div class="admin-action-grid">
             <button class="btn btn-secondary" onclick="adminResetPool()">🔄 Reset Question Locks / Pool</button>
             <button class="btn btn-danger" onclick="adminClearGameStates()">🗑️ Clear All Game States</button>
+          </div>
+          <div class="admin-security-note">
+            <span>⚠️</span><span>Resetting the pool unlocks previously allotted questions. Clearing game states removes saved contestant progress.</span>
           </div>
         </div>
 
         <!-- Question Bank List -->
         <div class="admin-card">
           <h3>📚 Question Pool Bank</h3>
+          <p style="color:var(--chalk-dim); font-size:.86rem;">Review every question currently available in the pool.</p>
           <div class="table-wrap">
             <table>
               <thead>
@@ -1642,154 +1825,69 @@
         this.peer = null;
         this.connections = [];
         this.roomId = 'teachers-day-quiz-2026';
-        this.mode = null;
-        this.tvConnection = null;
-        this.tvConnected = false;
-        this.reconnectTimer = null;
       }
 
       initHost() {
-        if (typeof Peer === 'undefined' || this.mode === 'host') return;
-        this.mode = 'host';
+        if (typeof Peer === 'undefined') return;
         try {
-          if (this.peer) this.peer.destroy();
           this.peer = new Peer(this.roomId);
-
           this.peer.on('open', (id) => {
             console.log('PeerJS Host Ready:', id);
-            this.updateBadge('🟢 P2P Host Live');
+            this.updateBadge('🟢 P2P Host Live (' + id + ')');
           });
-
           this.peer.on('connection', (conn) => {
-            this.connections = this.connections.filter(c => c && c.open);
             this.connections.push(conn);
-
+            this.updateBadge(`🟢 Connected (${this.connections.length} TV Screen)`);
             conn.on('open', () => {
-              this.updateBadge(`🟢 Connected (${this.connections.length} TV Screen)`);
-              // IMPORTANT: send the current in-memory state immediately.
-              // Do not wait for Apps Script / server round-trip.
               this.broadcastCurrentState();
             });
-
-            conn.on('close', () => {
-              this.connections = this.connections.filter(c => c !== conn && c && c.open);
-              this.updateBadge(
-                this.connections.length
-                  ? `🟢 Connected (${this.connections.length} TV Screen)`
-                  : '🟢 P2P Host Live'
-              );
-            });
-
-            conn.on('error', () => {
-              this.connections = this.connections.filter(c => c !== conn && c && c.open);
-            });
           });
-
           this.peer.on('error', (err) => {
-            console.warn('PeerJS host error:', err);
-            // Do not silently switch to a random Peer ID. A TV using the
-            // fixed room code would then have no host to connect to.
-            this.updateBadge('🟠 TV connection unavailable — retrying...');
-            if (err && err.type === 'unavailable-id') {
-              clearTimeout(this.reconnectTimer);
-              this.reconnectTimer = setTimeout(() => {
-                try {
-                  if (this.peer) this.peer.destroy();
-                } catch(e) {}
-                this.peer = null;
-                this.mode = null;
-                this.initHost();
-              }, 2000);
+            if (err.type === 'unavailable-id') {
+              console.log('Room ID taken, using fallback host peer...');
+              this.peer = new Peer();
+              this.peer.on('open', (id) => {
+                this.updateBadge('🟢 P2P Host Ready (' + id + ')');
+              });
             }
           });
-        } catch(e) {
-          console.warn('Host sync init failed:', e);
-        }
+        } catch(e) {}
       }
 
       initTV(customRoomId) {
         if (typeof Peer === 'undefined') return;
-
         const targetRoom = customRoomId || this.roomId;
-        if (this.mode === 'tv' && this.tvConnected) return;
-
-        this.mode = 'tv';
-        this.tvConnected = false;
         this.updateBadge('📡 Connecting to Host: ' + targetRoom + '...');
-
         try {
           if (this.peer) this.peer.destroy();
           this.peer = new Peer();
-
           this.peer.on('open', () => {
-            const conn = this.peer.connect(targetRoom, {
-              reliable: true
-            });
-            this.tvConnection = conn;
-
+            const conn = this.peer.connect(targetRoom);
             conn.on('open', () => {
-              this.tvConnected = true;
               this.updateBadge('🟢 TV Synced with Host PC!');
             });
-
             conn.on('data', (data) => {
               if (data && data.type === 'PUBLIC_GAME_STATE') {
                 renderTVFromData(data.payload);
               }
             });
-
             conn.on('close', () => {
-              this.tvConnected = false;
-              this.tvConnection = null;
               this.updateBadge('🔴 Host Disconnected. Retrying...');
-              clearTimeout(this.reconnectTimer);
-              this.reconnectTimer = setTimeout(() => {
-                this.mode = null;
-                this.initTV(targetRoom);
-              }, 2000);
-            });
-
-            conn.on('error', (err) => {
-              console.warn('TV connection error:', err);
-              this.tvConnected = false;
+              setTimeout(() => this.initTV(targetRoom), 3000);
             });
           });
-
-          this.peer.on('error', (err) => {
-            console.warn('PeerJS TV error:', err);
-            this.tvConnected = false;
-            this.updateBadge('🟠 Unable to connect to Host — retrying...');
-            clearTimeout(this.reconnectTimer);
-            this.reconnectTimer = setTimeout(() => {
-              this.mode = null;
-              this.initTV(targetRoom);
-            }, 2500);
-          });
-        } catch(e) {
-          console.warn('TV sync init failed:', e);
-        }
+        } catch(e) {}
       }
 
       broadcast(data) {
-        this.connections = this.connections.filter(conn => conn && conn.open);
         this.connections.forEach(conn => {
-          try {
-            conn.send(data);
-          } catch(e) {
-            console.warn('TV broadcast failed:', e);
-          }
+          if (conn && conn.open) conn.send(data);
         });
       }
 
-      // Immediate TV snapshot. This intentionally uses the Host's current
-      // browser state instead of calling the backend on every TV update.
-      broadcastCurrentState() {
-        if (this.mode !== 'host') return;
-        const payload = buildImmediatePublicState();
-        this.broadcast({
-          type: 'PUBLIC_GAME_STATE',
-          payload: payload
-        });
+      async broadcastCurrentState() {
+        const stateData = await callBackend('getPublicGameState');
+        this.broadcast({ type: 'PUBLIC_GAME_STATE', payload: stateData });
       }
 
       updateBadge(msg) {
@@ -1797,8 +1895,7 @@
         if (el) el.innerText = msg;
       }
     }
-
-const sync = new SyncEngine();
+    const sync = new SyncEngine();
 
     function connectTVToRoom() {
       const code = document.getElementById('tvRoomCodeInput').value.trim() || 'teachers-day-quiz-2026';
@@ -2017,7 +2114,6 @@ const sync = new SyncEngine();
         if (!lockedPlayer) {
           return { active: false, message: 'Waiting for host to start...' };
         }
-
         const states = this.getGameStates();
         const playerState = states[lockedPlayer];
         if (!playerState) {
@@ -2026,46 +2122,26 @@ const sync = new SyncEngine();
 
         if (playerState.status !== 'Playing') {
           if (playerState.status === 'Completed') {
-            return {
-              active: false,
-              message: `🎉 ${playerState.playerName} won ₹${(playerState.score || 0).toLocaleString('en-IN')}!`
-            };
+            return { active: false, message: `🎉 ${playerState.playerName} won ₹${(playerState.score || 0).toLocaleString('en-IN')}!` };
           }
           if (playerState.status === 'Lost') {
-            return {
-              active: false,
-              message: `Game Over — ${playerState.playerName} scored ₹${(playerState.score || 0).toLocaleString('en-IN')}`
-            };
+            return { active: false, message: `Game Over — ${playerState.playerName} scored ₹${(playerState.score || 0).toLocaleString('en-IN')}` };
           }
           return { active: false, message: 'Waiting for next game...' };
         }
 
-        // NEVER call claimNextQuestion() here.
-        // A TV refresh/poll must be read-only and must not change the
-        // question assignment or question pool.
-        const key = `${String(playerState.playerName).trim().toLowerCase()}_Q${playerState.currentQuestion}`;
-        const assignedMap = this.getAssignedMap();
-        const assignedId = assignedMap[key];
-        const qData = this.getAllQuestionsPool().find(q => q.id === assignedId);
-
-        if (!qData) {
-          return {
-            active: false,
-            message: 'Question is still loading from the host...'
-          };
-        }
-
+        const qData = this.claimNextQuestion(playerState.playerName, playerState.currentQuestion);
         return {
           active: true,
           playerName: playerState.playerName,
           currentQuestion: playerState.currentQuestion,
-          score: playerState.score || 0,
+          score: playerState.score,
           question: qData.question,
-          options: [qData.optionA, qData.optionB, qData.optionC, qData.optionD],
+          options: qData.options,
           difficulty: qData.difficulty,
           answered: playerState.answered || false,
           selectedOption: playerState.selectedOption || '',
-          correctOption: playerState.correctOption || (playerState.answered ? qData.correct : '')
+          correctOption: qData.correct
         };
       },
 
@@ -2196,8 +2272,9 @@ const sync = new SyncEngine();
       document.getElementById(tabId).classList.add('active');
 
       // Stop TV polling if switching away from TV tab
-      if (tabId !== 'tvView') {
-        stopTVPolling();
+      if (tabId !== 'tvView' && state.tvPollInterval) {
+        clearInterval(state.tvPollInterval);
+        state.tvPollInterval = null;
       }
 
       if (tabId === 'tvView') {
@@ -2239,54 +2316,36 @@ const sync = new SyncEngine();
         alert('Please enter a contestant name!');
         return;
       }
-
       state.playerName = name;
       document.getElementById('displayPlayerName').innerText = name;
 
-      // Show the quiz shell immediately. Do not make the UI wait for
-      // the server before the host can see the game.
-      document.getElementById('playerSelectSection').style.display = 'none';
-      document.getElementById('quizAreaSection').style.display = 'block';
+      // Lock TV to active player automatically!
+      await callBackend('lockTVToPlayer', name);
 
-      // Lock TV in the background.
-      callBackend('lockTVToPlayer', name).catch(() => {});
-
-      // Load an existing state if available; otherwise start Q1.
+      // Check existing state or start fresh
       try {
         const res = await callBackend('getGameState', name);
         if (res && !res.error && res.status === 'Playing') {
           state.currentQNum = res.currentQuestion || 1;
           state.score = res.score || 0;
           state.securedAmount = res.securedAmount || 0;
-          state.lifelines.fiftyFifty = !!res.fiftyFiftyUsed;
-          state.lifelines.audiencePoll = !!res.audiencePollUsed;
-          state.lifelines.askExpert = !!res.askExpertUsed;
-          state.lifelines.questionSwap = !!res.questionSwapUsed;
+          state.lifelines.fiftyFifty = res.fiftyFiftyUsed;
+          state.lifelines.audiencePoll = res.audiencePollUsed;
+          state.lifelines.askExpert = res.askExpertUsed;
+          state.lifelines.questionSwap = res.questionSwapUsed;
         } else {
           state.currentQNum = 1;
           state.score = 0;
           state.securedAmount = 0;
-          state.lifelines = {
-            fiftyFifty: false,
-            audiencePoll: false,
-            askExpert: false,
-            questionSwap: false
-          };
+          state.lifelines = { fiftyFifty: false, audiencePoll: false, askExpert: false, questionSwap: false };
         }
-      } catch(e) {
-        state.currentQNum = 1;
-        state.score = 0;
-        state.securedAmount = 0;
-        state.lifelines = {
-          fiftyFifty: false,
-          audiencePoll: false,
-          askExpert: false,
-          questionSwap: false
-        };
-      }
+      } catch(e) {}
+
+      document.getElementById('playerSelectSection').style.display = 'none';
+      document.getElementById('quizAreaSection').style.display = 'block';
 
       updateLifelineButtons();
-      await loadQuestion();
+      loadQuestion();
     }
 
     async function loadQuestion() {
@@ -2294,92 +2353,63 @@ const sync = new SyncEngine();
       renderPrizeLadder();
 
       document.getElementById('currentQNum').innerText = state.currentQNum;
-      document.getElementById('currentScoreVal').innerText =
-        state.score.toLocaleString('en-IN');
-      document.getElementById('questionText').innerText =
-        'Claiming next question from pool...';
+      document.getElementById('currentScoreVal').innerText = state.score.toLocaleString('en-IN');
+      document.getElementById('questionText').innerText = 'Claiming next question from pool...';
 
       try {
-        const res = await callBackend(
-          'claimNextQuestion',
-          state.playerName,
-          state.currentQNum
-        );
+        const res = await callBackend('claimNextQuestion', state.playerName, state.currentQNum);
+        if (res && res.success) {
+          state.currentQuestionData = res;
+          document.getElementById('difficultyTag').innerText = `${res.difficulty.toUpperCase()} LEVEL · Q${res.gameQuestion || state.currentQNum}`;
+          document.getElementById('questionText').innerText = res.question;
 
-        if (!res || !res.success) {
-          alert((res && res.error) || 'Failed to claim question.');
-          return;
+          document.getElementById('optAText').innerText = res.options[0];
+          document.getElementById('optBText').innerText = res.options[1];
+          document.getElementById('optCText').innerText = res.options[2];
+          document.getElementById('optDText').innerText = res.options[3];
+
+          // Automatically enable options and start 60s timer for seamless gameplay!
+          state.gameStartedForQuestion = true;
+          ['A', 'B', 'C', 'D'].forEach(opt => {
+            const btn = document.getElementById(`opt${opt}`);
+            if (btn) {
+              btn.className = 'option-btn';
+              btn.disabled = false;
+            }
+          });
+
+          const startBtn = document.getElementById('startResumeHeaderBtn');
+          if (startBtn) startBtn.classList.remove('btn-pulse');
+
+          // Automatically start 60-second timer countdown!
+          startTimer();
+          saveState('Playing');
+        } else {
+          alert(res.error || 'Failed to claim question.');
         }
-
-        state.currentQuestionData = res;
-
-        document.getElementById('difficultyTag').innerText =
-          `${res.difficulty.toUpperCase()} LEVEL · Q${res.gameQuestion || state.currentQNum}`;
-        document.getElementById('questionText').innerText = res.question;
-
-        document.getElementById('optAText').innerText = res.options[0];
-        document.getElementById('optBText').innerText = res.options[1];
-        document.getElementById('optCText').innerText = res.options[2];
-        document.getElementById('optDText').innerText = res.options[3];
-
-        // IMPORTANT:
-        // Loading a question does NOT start the 60-second timer.
-        // The TV gets the question immediately, while the host controls
-        // the actual start with the Start / Resume button.
-        state.gameStartedForQuestion = false;
-        state.answerUnlocked = false;
-
-        const startBtn = document.getElementById('startResumeHeaderBtn');
-        if (startBtn) startBtn.classList.add('btn-pulse');
-
-        // Save the question as the current live question so a newly opened
-        // TV screen can recover it, but do not start the timer.
-        saveState('Playing', {
-          selectedOption: '',
-          correctOption: '',
-          answered: false,
-          gameStarted: false,
-          questionId: res.id
-        });
-
-        // Push the question to the TV immediately.
-        sync.broadcastCurrentState();
       } catch(err) {
-        alert('Error loading question: ' + (err && err.message ? err.message : err));
+        alert('Error loading question: ' + err.message);
       }
     }
 
     function selectOption(opt) {
       if (!state.currentQuestionData || !state.gameStartedForQuestion || state.answerUnlocked) return;
-
       audio.playLock();
       state.selectedOption = opt;
-
-      document.querySelectorAll('.option-btn')
-        .forEach(btn => btn.classList.remove('selected'));
-
+      document.querySelectorAll('.option-btn').forEach(btn => btn.classList.remove('selected'));
       const chosenBtn = document.getElementById(`opt${opt}`);
       if (chosenBtn) chosenBtn.classList.add('selected');
-
       document.getElementById('lockAnswerBtn').disabled = false;
-
-      // TV updates first; backend persistence happens in parallel.
-      sync.broadcastCurrentState();
-      saveState('Playing', {
-        selectedOption: opt,
-        correctOption: '',
-        answered: false,
-        gameStarted: true
-      });
+      saveState('Playing', { selectedOption: opt, answered: false });
     }
 
     async function confirmAnswer() {
-      if (!state.selectedOption || !state.currentQuestionData) return;
-
+      if (!state.selectedOption) return;
       stopTimer();
       audio.playLock();
       document.getElementById('lockAnswerBtn').disabled = true;
 
+      // Lock option buttons so contestant cannot click after locking
       ['A', 'B', 'C', 'D'].forEach(opt => {
         const btn = document.getElementById(`opt${opt}`);
         if (btn) btn.disabled = true;
@@ -2391,83 +2421,55 @@ const sync = new SyncEngine();
       const chosenBtn = document.getElementById(`opt${state.selectedOption}`);
       const correctBtn = document.getElementById(`opt${correct}`);
 
+      saveState('Playing', { selectedOption: state.selectedOption, correctOption: correct, answered: true });
+
       if (isCorrect) {
         state.answerUnlocked = true;
-        if (chosenBtn) chosenBtn.classList.add('correct');
+        chosenBtn.classList.add('correct');
 
         const currentPrizeObj = PRIZES.find(p => p.q === state.currentQNum);
         state.score = currentPrizeObj ? currentPrizeObj.amount : state.score;
 
         const isPadav = currentPrizeObj && currentPrizeObj.padav;
-        if (isPadav) state.securedAmount = currentPrizeObj.amount;
+        if (isPadav) {
+          state.securedAmount = currentPrizeObj.amount;
+        }
 
-        // Broadcast the result BEFORE waiting for Apps Script.
-        sync.broadcastCurrentState();
-        saveState('Playing', {
-          selectedOption: state.selectedOption,
-          correctOption: correct,
-          answered: true,
-          gameStarted: true
-        });
-
+        // TRIGGER CELEBRATION CONFETTI BURST!
         if (isPadav || state.currentQNum === 15) {
           audio.playWinFanfare();
-          triggerCelebrationBurst(true);
+          triggerCelebrationBurst(true); // Huge Grand Fireworks Burst!
         } else {
           audio.playCorrect();
-          triggerCelebrationBurst(false);
+          triggerCelebrationBurst(false); // Standard Celebration Burst!
         }
 
         if (state.currentQNum === 15) {
           setTimeout(() => {
-            saveState('Completed', {
-              selectedOption: state.selectedOption,
-              correctOption: correct,
-              answered: true,
-              gameStarted: true
-            });
+            saveState('Completed');
             showDummyCheque(state.playerName, 10000000);
           }, 1800);
         } else {
+          // UNLOCK & ENABLE NEXT QUESTION BUTTON AFTER CORRECT ANSWER REVEAL!
           const nextBtn = document.getElementById('nextQuestionBtn');
           if (nextBtn) {
             nextBtn.disabled = false;
             nextBtn.classList.add('btn-pulse');
           }
-
           const nextQHeaderBtn = document.getElementById('nextQHeaderBtn');
           if (nextQHeaderBtn) {
             nextQHeaderBtn.disabled = false;
             nextQHeaderBtn.classList.add('btn-pulse');
           }
-
-          // Send the updated score/result again after the visual update.
-          sync.broadcastCurrentState();
         }
       } else {
-        if (chosenBtn) chosenBtn.classList.add('wrong');
+        chosenBtn.classList.add('wrong');
         if (correctBtn) correctBtn.classList.add('correct');
-
-        // Show the wrong answer immediately on the TV.
-        sync.broadcastCurrentState();
-        saveState('Playing', {
-          selectedOption: state.selectedOption,
-          correctOption: correct,
-          answered: true,
-          gameStarted: true
-        });
-
         audio.playWrong();
 
         setTimeout(() => {
           state.score = state.securedAmount;
-          saveState('Lost', {
-            selectedOption: state.selectedOption,
-            correctOption: correct,
-            answered: true,
-            gameStarted: true
-          });
-          sync.broadcastCurrentState();
+          saveState('Lost');
           showDummyCheque(state.playerName, state.securedAmount);
         }, 2000);
       }
@@ -2483,15 +2485,8 @@ const sync = new SyncEngine();
         alert('You are already at Question 15 (Grand Final Level - ₹1 Crore)!');
         return;
       }
-
       stopTimer();
       state.currentQNum++;
-      state.currentQuestionData = null;
-      state.selectedOption = null;
-      state.answerUnlocked = false;
-      state.gameStartedForQuestion = false;
-
-      sync.broadcastCurrentState();
       loadQuestion();
     }
 
@@ -2500,6 +2495,7 @@ const sync = new SyncEngine();
       state.answerUnlocked = false;
       state.gameStartedForQuestion = false;
 
+      // Lock Lock Answer & Next Question buttons for the new question
       document.getElementById('lockAnswerBtn').disabled = true;
 
       const nextBtn = document.getElementById('nextQuestionBtn');
@@ -2518,9 +2514,7 @@ const sync = new SyncEngine();
         const btn = document.getElementById(`opt${opt}`);
         if (btn) {
           btn.className = 'option-btn';
-          // Question is visible, but answering starts only when the
-          // host presses Start / Resume.
-          btn.disabled = true;
+          btn.disabled = false;
         }
       });
     }
@@ -2544,14 +2538,7 @@ const sync = new SyncEngine();
           stopTimer();
           audio.playWrong();
           state.score = state.securedAmount;
-          sync.broadcastCurrentState();
-          saveState('Lost', {
-            selectedOption: state.selectedOption || '',
-            correctOption: state.currentQuestionData ? state.currentQuestionData.correct : '',
-            answered: true,
-            gameStarted: true
-          });
-          sync.broadcastCurrentState();
+          saveState('Lost');
           showDummyCheque(state.playerName, state.securedAmount);
         }
       }, 1000);
@@ -2659,33 +2646,13 @@ const sync = new SyncEngine();
         const res = await callBackend('swapCurrentQuestion', state.playerName, state.currentQNum);
         if (res && res.success) {
           state.currentQuestionData = res;
-          state.selectedOption = null;
-          state.answerUnlocked = false;
-          state.gameStartedForQuestion = true;
+          resetOptionButtons();
           document.getElementById('questionText').innerText = res.question;
           document.getElementById('optAText').innerText = res.options[0];
           document.getElementById('optBText').innerText = res.options[1];
           document.getElementById('optCText').innerText = res.options[2];
           document.getElementById('optDText').innerText = res.options[3];
-
-          ['A', 'B', 'C', 'D'].forEach(opt => {
-            const btn = document.getElementById(`opt${opt}`);
-            if (btn) {
-              btn.className = 'option-btn';
-              btn.disabled = false;
-            }
-          });
-
-          document.getElementById('lockAnswerBtn').disabled = true;
-          sync.broadcastCurrentState();
           startTimer();
-          saveState('Playing', {
-            selectedOption: '',
-            correctOption: '',
-            answered: false,
-            gameStarted: true,
-            questionId: res.id
-          });
         } else {
           alert(res.error || 'Failed to swap question.');
         }
@@ -2709,7 +2676,6 @@ const sync = new SyncEngine();
 
     function saveState(status, extraDetails) {
       if (!state.playerName) return;
-
       const extra = {
         firstPadavReached: state.currentQNum > 5,
         secondPadavReached: state.currentQNum > 10,
@@ -2720,37 +2686,15 @@ const sync = new SyncEngine();
         questionSwapUsed: state.lifelines.questionSwap,
         ...(extraDetails || {})
       };
-
-      // IMPORTANT: broadcast the Host state NOW.
-      // Do not wait for the Apps Script round-trip.
-      sync.broadcastCurrentState();
-
-      callBackend(
-        'saveGameState',
-        state.playerName,
-        state.currentQNum,
-        state.score,
-        0,
-        status,
-        extra
-      ).then(() => {
-        // Backend is now persistent; send one final snapshot in case the
-        // TV connected during the save.
+      callBackend('saveGameState', state.playerName, state.currentQNum, state.score, 0, status, extra).then(() => {
         sync.broadcastCurrentState();
-      }).catch(() => {
-        // The TV must continue working even if the backend is slow/unavailable.
       });
     }
 
     function resetToPlayerSelect() {
       stopTimer();
-      state.currentQuestionData = null;
-      state.selectedOption = null;
-      state.answerUnlocked = false;
-      state.gameStartedForQuestion = false;
       document.getElementById('quizAreaSection').style.display = 'none';
       document.getElementById('playerSelectSection').style.display = 'block';
-      sync.broadcastCurrentState();
     }
 
     function restartOrNewGame() {
@@ -2770,12 +2714,11 @@ const sync = new SyncEngine();
     function startOrResumeHeaderGame() {
       const startBtn = document.getElementById('startResumeHeaderBtn');
 
-      if (!state.currentQuestionData) return;
-
-      // Start/resume THIS question immediately.
-      if (!state.gameStartedForQuestion && !state.answerUnlocked) {
+      // If timer is not running yet for current question, START THE TIMER & GAME FOR THIS QUESTION!
+      if (!state.gameStartedForQuestion && state.currentQuestionData && !state.answerUnlocked) {
         state.gameStartedForQuestion = true;
 
+        // Enable options for contestant to answer
         ['A', 'B', 'C', 'D'].forEach(opt => {
           const btn = document.getElementById(`opt${opt}`);
           if (btn) btn.disabled = false;
@@ -2783,24 +2726,12 @@ const sync = new SyncEngine();
 
         if (startBtn) startBtn.classList.remove('btn-pulse');
 
-        // Start the local timer without waiting for the backend.
+        // NOW start the 60-second timer countdown!
         startTimer();
-
-        // Immediate TV update.
-        sync.broadcastCurrentState();
-
-        // Persist in background.
-        saveState('Playing', {
-          selectedOption: state.selectedOption || '',
-          correctOption: '',
-          answered: false,
-          gameStarted: true,
-          questionId: state.currentQuestionData.id
-        });
         return;
       }
 
-      // If already running or answered, the button starts a new contestant/game.
+      // If game/timer is already active or question answered, prompt to start a new game / change contestant
       restartOrNewGame();
     }
 
@@ -2811,90 +2742,34 @@ const sync = new SyncEngine();
       const inputVal = document.getElementById('playerNameInput').value.trim();
       const name = inputVal || state.playerName;
       if (!name) return alert('Enter a player name first!');
-
       state.playerName = name;
-
-      // Lock in background; never make the visible TV update wait for it.
-      callBackend('lockTVToPlayer', name).catch(() => {});
-
-      // Broadcast whatever is currently visible on the Host immediately.
+      await callBackend('lockTVToPlayer', name);
       sync.broadcastCurrentState();
       alert(`📺 TV Broadcast locked & synced for: ${name}`);
     }
 
     function startTVPolling() {
-      stopTVPolling();
-
-      // P2P is the primary transport. Polling is only a recovery path.
-      // A 1500 ms interval was the main reason TV felt delayed.
       pollTVState();
-
-      state.tvPollInterval = setInterval(() => {
-        if (!sync.tvConnected) pollTVState();
-      }, 5000);
-    }
-
-    function stopTVPolling() {
-      if (state.tvPollInterval) {
-        clearInterval(state.tvPollInterval);
-        state.tvPollInterval = null;
-      }
+      state.tvPollInterval = setInterval(pollTVState, 1500);
     }
 
     async function pollTVState() {
-      // If the TV is already connected directly to the Host, never make a
-      // backend request just to repaint the screen.
-      if (sync.tvConnected) return;
-
       try {
         const res = await callBackend('getPublicGameState');
         renderTVFromData(res);
       } catch(e) {}
     }
 
-    function buildImmediatePublicState() {
-      if (!state.playerName || !state.currentQuestionData) {
-        return {
-          active: false,
-          message: 'WAITING FOR HOST TO START GAME'
-        };
-      }
-
-      const q = state.currentQuestionData;
-
-      return {
-        active: true,
-        playerName: state.playerName,
-        currentQuestion: state.currentQNum,
-        score: state.score || 0,
-        question: q.question,
-        options: Array.isArray(q.options)
-          ? q.options.slice(0, 4)
-          : [q.optionA, q.optionB, q.optionC, q.optionD],
-        difficulty: q.difficulty,
-        started: !!state.gameStartedForQuestion,
-        answered: !!state.answerUnlocked,
-        selectedOption: state.selectedOption || '',
-        correctOption: state.answerUnlocked ? (q.correct || '') : '',
-        questionId: q.id || ''
-      };
-    }
-
     function renderTVPrizeLadder(currentQNum) {
       const container = document.getElementById('tvPrizeLadder');
       if (!container) return;
-
       const qNum = Number(currentQNum || 1);
       let html = `<div class="prize-title">🏆 Prize Ladder</div>`;
-
       for (let i = PRIZES.length - 1; i >= 0; i--) {
         const item = PRIZES[i];
         const isCurrent = item.q === qNum;
         const isAchieved = item.q < qNum;
-        const classes =
-          `prize-step ${item.padav ? 'padav' : ''} ` +
-          `${isCurrent ? 'current' : ''} ${isAchieved ? 'achieved' : ''}`;
-
+        const classes = `prize-step ${item.padav ? 'padav' : ''} ${isCurrent ? 'current' : ''} ${isAchieved ? 'achieved' : ''}`;
         html += `
           <div class="${classes}">
             <span>${item.q}. ${item.padav ? '🚩' : ''} ₹${item.amount.toLocaleString('en-IN')}</span>
@@ -2902,7 +2777,6 @@ const sync = new SyncEngine();
           </div>
         `;
       }
-
       container.innerHTML = html;
     }
 
@@ -2911,66 +2785,48 @@ const sync = new SyncEngine();
       const content = document.getElementById('tvActiveContent');
 
       if (!res || !res.active) {
-        if (banner) banner.innerText =
-          res ? res.message : 'WAITING FOR HOST TO START GAME';
-        if (content) content.style.display = 'none';
-        return;
-      }
+        banner.innerText = res ? res.message : 'WAITING FOR HOST TO START GAME';
+        content.style.display = 'none';
+      } else {
+        banner.innerText = `LIVE BROADCAST · Q${res.currentQuestion} OF 15`;
+        content.style.display = 'block';
 
-      if (banner) {
-        banner.innerText = res.started
-          ? `LIVE BROADCAST · Q${res.currentQuestion} OF 15`
-          : `QUESTION READY · Q${res.currentQuestion} OF 15`;
-      }
+        document.getElementById('tvPlayerName').innerText = res.playerName;
+        document.getElementById('tvQNum').innerText = res.currentQuestion;
+        document.getElementById('tvScore').innerText = (res.score || 0).toLocaleString('en-IN');
+        document.getElementById('tvQuestionText').innerText = res.question;
 
-      if (content) content.style.display = 'block';
+        document.getElementById('tvOptAText').innerText = res.options[0];
+        document.getElementById('tvOptBText').innerText = res.options[1];
+        document.getElementById('tvOptCText').innerText = res.options[2];
+        document.getElementById('tvOptDText').innerText = res.options[3];
 
-      document.getElementById('tvPlayerName').innerText = res.playerName || '';
-      document.getElementById('tvQNum').innerText = res.currentQuestion || '';
-      document.getElementById('tvScore').innerText =
-        (res.score || 0).toLocaleString('en-IN');
-      document.getElementById('tvQuestionText').innerText = res.question || '';
+        renderTVPrizeLadder(res.currentQuestion);
 
-      const opts = Array.isArray(res.options) ? res.options : [];
-      document.getElementById('tvOptAText').innerText = opts[0] || '';
-      document.getElementById('tvOptBText').innerText = opts[1] || '';
-      document.getElementById('tvOptCText').innerText = opts[2] || '';
-      document.getElementById('tvOptDText').innerText = opts[3] || '';
-
-      renderTVPrizeLadder(res.currentQuestion);
-
-      ['A', 'B', 'C', 'D'].forEach(opt => {
-        const el = document.getElementById(`tvOpt${opt}`);
-        if (!el) return;
-
-        el.className = 'tv-option';
-
-        if (res.selectedOption === opt) {
-          el.classList.add('selected');
-        }
-
-        if (res.answered && opt === res.correctOption) {
-          el.classList.add('correct');
-
-          if (!el.dataset.burstDone) {
-            el.dataset.burstDone = 'true';
-            triggerCelebrationBurst(
-              res.currentQuestion === 5 ||
-              res.currentQuestion === 10 ||
-              res.currentQuestion === 15
-            );
+        ['A', 'B', 'C', 'D'].forEach(opt => {
+          const el = document.getElementById(`tvOpt${opt}`);
+          el.className = 'tv-option';
+          if (res.selectedOption === opt) {
+            el.classList.add('selected');
           }
-        } else {
-          delete el.dataset.burstDone;
-        }
-      });
+          if (res.answered && opt === res.correctOption) {
+            el.classList.add('correct');
+            if (!el.dataset.burstDone) {
+              el.dataset.burstDone = 'true';
+              triggerCelebrationBurst(res.currentQuestion === 5 || res.currentQuestion === 10 || res.currentQuestion === 15);
+            }
+          } else {
+            delete el.dataset.burstDone;
+          }
+        });
+      }
     }
 
     // Listen for localStorage changes across browser tabs on same PC
     window.addEventListener('storage', (e) => {
       if (e.key === 'kbc_tv_locked_player' || e.key === 'kbc_game_states') {
         const tvTabActive = document.getElementById('tvView').classList.contains('active');
-        if (tvTabActive && !sync.tvConnected) pollTVState();
+        if (tvTabActive) pollTVState();
       }
     });
 
