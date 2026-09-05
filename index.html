@@ -766,201 +766,31 @@
       border-color: #e74c3c !important;
     }
 
-    /* ---- ADMIN PANEL / CONTROL CENTRE ---- */
-    #adminView {
-      padding-top: 8px;
+    /* ---- ADMIN PANEL & TABLES ---- */
+    .admin-card {
+      background: rgba(14, 29, 59, 0.95);
+      border: 1.5px solid var(--glass-border-strong);
+      border-radius: var(--r-lg);
+      padding: 38px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7);
     }
 
-    #adminView .player-select {
-      max-width: 520px;
-      margin: 42px auto;
-      padding: 42px;
-      text-align: center;
-      background: linear-gradient(145deg, rgba(18, 37, 72, 0.98), rgba(10, 24, 50, 0.98));
-      border: 1px solid rgba(255, 215, 0, 0.28);
-      border-radius: 24px;
-      box-shadow: 0 24px 70px rgba(0,0,0,.55);
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 18px;
+      text-align: left;
     }
 
-    #adminView .player-select h2 {
-      margin-bottom: 8px;
-      font-size: 2rem;
+    .admin-table th, .admin-table td {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--glass-border);
     }
 
-    #adminView .player-select input {
-      max-width: 320px;
-      margin: 18px auto;
-      text-align: center;
-      letter-spacing: .28em;
-      font-size: 1.2rem;
-    }
-
-    #adminPanelSection {
-      display: grid;
-      grid-template-columns: minmax(0, 1.35fr) minmax(300px, .65fr);
-      gap: 22px;
-      align-items: start;
-    }
-
-    #adminPanelSection .admin-card {
-      position: relative;
-      background: linear-gradient(145deg, rgba(15, 32, 65, .98), rgba(9, 22, 46, .98));
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 20px;
-      padding: 26px;
-      box-shadow: 0 16px 42px rgba(0,0,0,.36);
-      overflow: hidden;
-    }
-
-    #adminPanelSection .admin-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, #ffd700, #e59424, transparent);
-      opacity: .9;
-    }
-
-    #adminPanelSection .admin-card h3 {
-      margin: 0 0 8px;
-      font-size: 1.18rem;
-      color: #fff;
-    }
-
-    #adminPanelSection .admin-card > p {
-      margin-top: 0;
-    }
-
-    #adminPanelSection .admin-card:nth-child(1),
-    #adminPanelSection .admin-card:nth-child(2),
-    #adminPanelSection .admin-card:nth-child(4) {
-      grid-column: 1 / -1;
-    }
-
-    #adminPanelSection .admin-card:nth-child(3) {
-      grid-column: 1 / -1;
-    }
-
-    #adminPanelSection .form-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-      margin: 20px 0;
-    }
-
-    #adminPanelSection .form-group.full {
-      grid-column: 1 / -1;
-    }
-
-    #adminPanelSection .form-group label {
-      display: block;
-      margin-bottom: 7px;
-      color: #dce7ff;
-      font-size: .82rem;
+    .admin-table th {
+      color: var(--gold-hi);
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .06em;
-    }
-
-    #adminPanelSection .form-group input,
-    #adminPanelSection .form-group select {
-      width: 100%;
-      box-sizing: border-box;
-    }
-
-    .admin-upload-zone {
-      margin: 18px 0;
-      padding: 30px 20px;
-      text-align: center;
-      border: 2px dashed rgba(255,215,0,.35);
-      border-radius: 16px;
-      background: rgba(255,255,255,.035);
-      transition: .2s ease;
-    }
-
-    .admin-upload-zone:hover {
-      border-color: rgba(255,215,0,.65);
-      background: rgba(255,215,0,.045);
-    }
-
-    .admin-upload-icon {
-      font-size: 2.1rem;
-      margin-bottom: 8px;
-    }
-
-    .admin-action-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .admin-action-grid .btn {
-      width: 100%;
-    }
-
-    .admin-security-note {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      margin-top: 16px;
-      padding: 12px 14px;
-      border-radius: 12px;
-      background: rgba(255,215,0,.06);
-      border: 1px solid rgba(255,215,0,.14);
-      color: var(--chalk-dim);
-      font-size: .82rem;
-      line-height: 1.5;
-    }
-
-    #adminPanelSection .table-wrap {
-      margin-top: 18px;
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 14px;
-      overflow: auto;
-      background: rgba(0,0,0,.12);
-    }
-
-    #adminPanelSection table {
-      min-width: 760px;
-    }
-
-    #adminPanelSection th {
-      position: sticky;
-      top: 0;
-      z-index: 1;
-      background: #10284d;
-      color: #ffd700;
-      font-size: .78rem;
-      text-transform: uppercase;
-      letter-spacing: .05em;
-    }
-
-    #adminPanelSection td {
-      vertical-align: middle;
-    }
-
-    @media (max-width: 900px) {
-      #adminPanelSection {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 640px) {
-      #adminView .player-select {
-        margin: 20px auto;
-        padding: 28px 20px;
-      }
-      #adminPanelSection .admin-card {
-        padding: 20px;
-      }
-      #adminPanelSection .form-grid,
-      .admin-action-grid {
-        grid-template-columns: 1fr;
-      }
-      #adminPanelSection .form-group.full {
-        grid-column: auto;
-      }
+      font-size: 0.92rem;
     }
 
     /* ---- MODALS & CHEQUE ---- */
@@ -1230,6 +1060,216 @@
       font-weight: 500;
       opacity: 0.75;
     }
+
+/* ============================================================
+   ADMIN PANEL — REDESIGNED CONTROL CENTRE
+   ============================================================ */
+#adminView {
+  padding: 18px 0 50px;
+}
+
+#adminView #adminAuthSection {
+  max-width: 520px;
+  margin: 40px auto;
+  padding: 44px 42px;
+  border-radius: 24px;
+  background: linear-gradient(145deg, rgba(20,42,78,.98), rgba(8,22,43,.98));
+  border: 1px solid rgba(120,190,255,.30);
+  box-shadow: 0 24px 70px rgba(0,0,0,.45);
+  text-align: center;
+}
+
+#adminView #adminAuthSection h2 {
+  margin: 0 0 8px;
+  font-size: 2rem;
+  letter-spacing: .3px;
+}
+
+#adminView #adminAuthSection p {
+  color: var(--chalk-dim);
+  margin: 0 0 24px;
+}
+
+#adminView #adminPinInput {
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  letter-spacing: 10px;
+  font-size: 1.35rem;
+  font-weight: 800;
+  border-radius: 14px;
+  padding: 15px 18px;
+}
+
+#adminView #adminAuthSection .btn {
+  width: 100%;
+  margin-top: 8px;
+}
+
+/* dashboard heading */
+#adminView #adminPanelSection::before {
+  content: "ADMIN CONTROL CENTRE";
+  display: block;
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: var(--marigold-hi);
+  margin: 4px 2px 8px;
+}
+
+#adminView #adminPanelSection::after {
+  content: "Manage questions, imports and live game controls from one place.";
+  display: block;
+  color: var(--chalk-dim);
+  font-size: .92rem;
+  margin: 0 2px 22px;
+}
+
+#adminView .admin-card {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(145deg, rgba(19,39,72,.98), rgba(9,24,47,.98));
+  border: 1px solid rgba(120,190,255,.22);
+  border-radius: 20px;
+  padding: 28px;
+  margin-bottom: 20px;
+  box-shadow: 0 14px 38px rgba(0,0,0,.30);
+}
+
+#adminView .admin-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(180deg, #ffd700, #53b7ff);
+  opacity: .9;
+}
+
+#adminView .admin-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.22rem;
+  letter-spacing: .2px;
+}
+
+#adminView .admin-card > p {
+  max-width: 900px;
+}
+
+/* import area */
+#adminView #excelFileInput + .btn {
+  min-width: 210px;
+}
+
+#adminView #excelFileNameDisplay {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255,215,0,.08);
+  border: 1px solid rgba(255,215,0,.20);
+}
+
+#adminView #excelPreviewBox {
+  border-color: rgba(83,183,255,.28) !important;
+  background: rgba(4,15,31,.65) !important;
+}
+
+/* form redesign */
+#adminView .form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+#adminView .form-group.full {
+  grid-column: 1 / -1;
+}
+
+#adminView .form-group label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .6px;
+  text-transform: uppercase;
+  color: #b9d9f5;
+}
+
+#adminView .form-group input,
+#adminView .form-group select {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
+  border-radius: 12px;
+  border: 1px solid rgba(150,205,240,.20);
+  background: rgba(3,14,29,.72);
+  color: var(--chalk);
+  padding: 12px 14px;
+}
+
+#adminView .form-group.full input {
+  min-height: 54px;
+}
+
+#adminView .form-group input:focus,
+#adminView .form-group select:focus {
+  outline: none;
+  border-color: rgba(83,183,255,.75);
+  box-shadow: 0 0 0 3px rgba(83,183,255,.10);
+}
+
+/* system controls become a warning/action strip */
+#adminView .admin-card:has(button[onclick*="adminResetPool"]) {
+  background: linear-gradient(145deg, rgba(28,43,65,.98), rgba(17,27,43,.98));
+}
+
+#adminView .admin-card:has(button[onclick*="adminResetPool"]) .btn-danger {
+  box-shadow: 0 8px 22px rgba(231,76,60,.18);
+}
+
+/* question bank */
+#adminView .table-wrap {
+  overflow-x: auto;
+  border: 1px solid rgba(120,190,255,.16);
+  border-radius: 14px;
+  background: rgba(3,13,27,.42);
+}
+
+#adminView .table-wrap table {
+  min-width: 760px;
+}
+
+#adminView .table-wrap th {
+  background: rgba(83,183,255,.08);
+  color: #bfe4ff;
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: .8px;
+  white-space: nowrap;
+}
+
+#adminView .table-wrap td {
+  vertical-align: middle;
+}
+
+#adminView .table-wrap tbody tr:hover {
+  background: rgba(83,183,255,.055);
+}
+
+@media (max-width: 760px) {
+  #adminView .form-grid {
+    grid-template-columns: 1fr;
+  }
+  #adminView .form-group.full {
+    grid-column: auto;
+  }
+  #adminView .admin-card {
+    padding: 22px 18px;
+  }
+}
+
 </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1428,111 +1468,127 @@
     <!-- TAB 4: ADMIN PANEL VIEW -->
     <div id="adminView" class="tab-content">
       <div id="adminAuthSection" class="player-select">
-        <div style="font-size:3rem; margin-bottom:8px;">🔐</div>
+        <div style="font-size:3rem; margin-bottom:10px;">🔐</div>
         <h2>Admin Control Centre</h2>
-        <p>Secure access to the question bank and game controls.</p>
-        <input type="password" id="adminPinInput" placeholder="Enter Admin PIN" maxlength="10" inputmode="numeric" autocomplete="off" />
-        <div class="btn-group" style="justify-content:center;">
-          <button class="btn" onclick="authenticateAdmin()">🔓 Unlock Control Centre</button>
-        </div>
-        <div class="admin-security-note" style="text-align:left;">
-          <span>🛡️</span><span>Only authorised staff should access this area. Question locks and game-state controls can affect the live quiz.</span>
+        <p>Secure access to the question bank and game controls</p>
+        <input type="password" id="adminPinInput" placeholder="Enter Admin PIN" maxlength="10" />
+        <div class="btn-group">
+          <button class="btn" onclick="authenticateAdmin()">Unlock Control Centre</button>
         </div>
       </div>
 
       <div id="adminPanelSection" style="display: none;">
-        <!-- Excel / CSV Bulk Upload Form -->
+
+        <!-- IMPORT QUESTIONS -->
         <div class="admin-card">
           <h3>📥 Question Bank Import</h3>
-          <p style="color: var(--chalk-dim); font-size: 0.88rem; line-height: 1.5;">
-            Add multiple questions at once using <strong>.xlsx</strong>, <strong>.xls</strong> or <strong>.csv</strong>. All imported questions are added to the pool and can later be locked automatically when allotted.
+          <p style="color:var(--chalk-dim); font-size:.88rem; line-height:1.55; margin:0 0 18px;">
+            Import multiple questions at once from Excel or CSV. Questions that have already
+            been allotted remain locked automatically.
           </p>
 
-          <div class="admin-upload-zone">
-            <div class="admin-upload-icon">📊</div>
-            <strong>Import an Excel / CSV question sheet</strong>
-            <div style="color:var(--chalk-dim); font-size:.82rem; margin:7px 0 16px;">Select a prepared question-bank file to preview it before saving.</div>
-            <input type="file" id="excelFileInput" accept=".xlsx, .xls, .csv" style="display: none;" onchange="handleExcelFileSelect(event)" />
-            <button class="btn btn-secondary" onclick="document.getElementById('excelFileInput').click()">📁 Choose File</button>
-            <div id="excelFileNameDisplay" style="margin-top:12px; font-weight:600; color:var(--marigold-hi); font-size:.9rem;">No file selected</div>
+          <div style="display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-bottom:16px;">
+            <input type="file" id="excelFileInput" accept=".xlsx, .xls, .csv"
+                   style="display:none;" onchange="handleExcelFileSelect(event)" />
+            <button class="btn btn-secondary"
+                    onclick="document.getElementById('excelFileInput').click()">
+              📁 Choose File
+            </button>
+            <button class="btn btn-secondary" onclick="downloadSampleExcelTemplate()">
+              📄 Download Template
+            </button>
+            <div id="excelFileNameDisplay">No file selected</div>
           </div>
 
-          <div id="excelPreviewBox" style="display: none; background: rgba(0,0,0,0.25); border: 1px solid var(--glass-border); border-radius: 14px; padding: 15px 18px; margin-bottom: 16px; font-size: 0.88rem;">
-            <div style="font-weight:700; color:var(--marigold-hi); margin-bottom:6px;" id="excelPreviewSummary">Previewing Excel Data...</div>
-            <div style="color:var(--chalk-dim);" id="excelPreviewDetails"></div>
+          <div id="excelPreviewBox" style="display:none; padding:14px 18px; margin-bottom:16px; border-radius:14px;">
+            <div id="excelPreviewSummary" style="font-weight:800; color:var(--marigold-hi); margin-bottom:6px;">
+              Previewing Excel Data...
+            </div>
+            <div id="excelPreviewDetails" style="color:var(--chalk-dim);"></div>
           </div>
 
-          <div class="admin-action-grid">
-            <button class="btn" id="uploadExcelBtn" onclick="processAndUploadExcel()" disabled>📤 Import & Save Questions</button>
-            <button class="btn btn-secondary" onclick="downloadSampleExcelTemplate()">📥 Download Sample Template</button>
-          </div>
+          <button class="btn" id="uploadExcelBtn" onclick="processAndUploadExcel()" disabled>
+            📤 Import & Save Questions
+          </button>
         </div>
 
-        <!-- Single Question Add Form -->
+        <!-- ADD QUESTION -->
         <div class="admin-card">
-          <h3>➕ Create Single Question</h3>
-          <p style="color:var(--chalk-dim); font-size:.86rem;">Add one question directly to the pool with its answer and difficulty level.</p>
+          <h3>✏️ Create a Question</h3>
+          <p style="color:var(--chalk-dim); font-size:.88rem; margin:0;">
+            Add one question manually to the appropriate difficulty pool.
+          </p>
+
           <div class="form-grid">
             <div class="form-group full">
-              <label>Question Text</label>
-              <input type="text" id="addQText" placeholder="e.g. Who wrote the Indian National Anthem?" />
+              <label>Question</label>
+              <input type="text" id="addQText" placeholder="Enter the complete question" />
             </div>
+
             <div class="form-group">
               <label>Option A</label>
-              <input type="text" id="addOptA" placeholder="Option A" />
+              <input type="text" id="addOptA" placeholder="Enter option A" />
             </div>
             <div class="form-group">
               <label>Option B</label>
-              <input type="text" id="addOptB" placeholder="Option B" />
+              <input type="text" id="addOptB" placeholder="Enter option B" />
             </div>
             <div class="form-group">
               <label>Option C</label>
-              <input type="text" id="addOptC" placeholder="Option C" />
+              <input type="text" id="addOptC" placeholder="Enter option C" />
             </div>
             <div class="form-group">
               <label>Option D</label>
-              <input type="text" id="addOptD" placeholder="Option D" />
+              <input type="text" id="addOptD" placeholder="Enter option D" />
             </div>
+
             <div class="form-group">
-              <label>Correct Option</label>
+              <label>Correct Answer</label>
               <select id="addCorrectOpt">
-                <option value="A">A — Option A</option>
-                <option value="B">B — Option B</option>
-                <option value="C">C — Option C</option>
-                <option value="D">D — Option D</option>
+                <option value="A">Option A</option>
+                <option value="B">Option B</option>
+                <option value="C">Option C</option>
+                <option value="D">Option D</option>
               </select>
             </div>
+
             <div class="form-group">
               <label>Difficulty Pool</label>
               <select id="addDifficulty">
-                <option value="Easy">Easy — Q1 to Q5</option>
-                <option value="Medium">Medium — Q6 to Q10</option>
-                <option value="Hard">Hard — Q11 to Q15</option>
+                <option value="Easy">Easy · Q1–Q5</option>
+                <option value="Medium">Medium · Q6–Q10</option>
+                <option value="Hard">Hard · Q11–Q15</option>
               </select>
             </div>
           </div>
-          <button class="btn" onclick="submitAddQuestion()">💾 Save Question to Pool</button>
+
+          <button class="btn" onclick="submitAddQuestion()">➕ Save Question</button>
         </div>
 
-        <!-- System Controls & Pool Reset -->
+        <!-- SYSTEM CONTROLS -->
         <div class="admin-card">
-          <h3>⚙️ Live Game & Pool Controls</h3>
-          <p style="color:var(--chalk-dim); font-size:.86rem;">Use these controls only when you intentionally want to reset the question-allocation state or clear saved contestant game states.</p>
-          <div class="admin-action-grid">
-            <button class="btn btn-secondary" onclick="adminResetPool()">🔄 Reset Question Locks / Pool</button>
-            <button class="btn btn-danger" onclick="adminClearGameStates()">🗑️ Clear All Game States</button>
-          </div>
-          <div class="admin-security-note">
-            <span>⚠️</span><span>Resetting the pool unlocks previously allotted questions. Clearing game states removes saved contestant progress.</span>
+          <h3>⚙️ Game & Pool Controls</h3>
+          <p style="color:var(--chalk-dim); font-size:.88rem; margin:0 0 18px;">
+            Use these controls only when preparing a new quiz session.
+          </p>
+          <div class="btn-group" style="justify-content:flex-start;">
+            <button class="btn btn-secondary" onclick="adminResetPool()">
+              🔄 Reset Question Locks / Pool
+            </button>
+            <button class="btn btn-danger" onclick="adminClearGameStates()">
+              🗑️ Clear All Game States
+            </button>
           </div>
         </div>
 
-        <!-- Question Bank List -->
+        <!-- QUESTION BANK -->
         <div class="admin-card">
           <h3>📚 Question Pool Bank</h3>
-          <p style="color:var(--chalk-dim); font-size:.86rem;">Review every question currently available in the pool.</p>
+          <p style="color:var(--chalk-dim); font-size:.88rem; margin:0 0 14px;">
+            Review every question and its current lock status.
+          </p>
           <div class="table-wrap">
-            <table>
+            <table class="admin-table">
               <thead>
                 <tr>
                   <th>ID</th>
@@ -1549,10 +1605,9 @@
             </table>
           </div>
         </div>
+
       </div>
     </div>
-  </div>
-
   <!-- MODALS -->
   <!-- Audience Poll Modal -->
   <div class="modal-overlay" id="audiencePollModal">
